@@ -1,6 +1,10 @@
 # Meal-Planner
 
-![Screenshots](Link to screenshot)
+![Screenshots-1](Link to screenshot)
+![Screenshots-2](Link to screenshot)
+![Screenshots-3](Link to screenshot)
+![Screenshots-4](Link to screenshot)
+![Screenshots-5](Link to screenshot)
 
 ## Summary
 Our app allows you to enter in your weight goals and create a meal plan for you based on your protein, carb, and fat requirements.
