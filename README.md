@@ -7,7 +7,7 @@
 ![Screenshots-5](Link to screenshot)
 
 ## Summary
-Our app allows you to enter in your weight goals and create a meal plan for you based on your protein, carb, and fat requirements.
+Our app allows you to enter in your health goals and creates a meal plan for you based on your calorie/macro requirements.
 
 ## Getting Started
 
@@ -25,4 +25,5 @@ Your favorite browser (Google Chrome, Mozilla, Edge, Opera)
 
 * Shantell Davis
 * Ryan Gelow
+* Denzel Hartshorn
 * Garrett Young
