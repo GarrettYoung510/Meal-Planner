@@ -13,6 +13,7 @@ import Signup from './containers/Signup';
 import Signin from './containers/Signin';
 import Signout from './containers/Signout';
 // import Todo from './containers/Todo';
+import Meals from './containers/Meals';
 
 // Import components
 import Main from './components/Pages/Main';
@@ -43,7 +44,7 @@ ReactDOM.render(
         
         <Route exact path='/signin' component={Signin}/>
         <Route exact path='/signout' component={Signout}/>
-
+        <Route exact path='/meals' component={Meals}/>
         {/* <Route exact path='/counter' component={Counter}/>
         <Route exact path='/stuff' component={Stuff}/>
         <Route exact path='/todo' component={Todo}/> */}

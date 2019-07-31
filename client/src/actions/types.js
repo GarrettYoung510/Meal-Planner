@@ -6,4 +6,4 @@ export const ADD_TODO = 'ADD_TODO';
 export const TODO_ERROR = 'TODO_ERROR';
 export const FETCH_TODOS = 'FETCH_TODOS';
 export const MEALS_ERROR = 'MEALS_ERROR';
-export const FETCH_MEALS = 'MEALS_TODOS';
+export const FETCH_MEALS = 'FETCH_MEALS';

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { addTodo, fetchTodos } from "../actions";
+import { fetchMeals } from "../actions";
 
 import requireAuth from './../hoc/requireAuth';
 
-class Todo extends Component {
+class Meal extends Component {
 
   componentDidMount() {
     this.props.fetchMeals();
@@ -54,7 +54,7 @@ function mapStateToProps({ meal }) {
 }
 
 const formedComponent = compose(
-  connect(mapStateToProps, { addMeal, fetchMeals }),
+  connect(mapStateToProps, { fetchMeals }),
   reduxForm({ form: 'Add meal'})
 )(Meal);
 
