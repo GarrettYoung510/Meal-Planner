@@ -55,6 +55,42 @@ class Signup extends Component {
             component={this.renderInput}
             autoComplete='none'/>
         </fieldset>
+        <fieldset>
+          <Field
+            name='gender'
+            // type='password'
+            // label='password'
+            // component={this.renderInput}
+            // autoComplete='none'
+            />
+        </fieldset>
+        <fieldset>
+          <Field
+            name='height'
+            // type='password'
+            // label='password'
+            // component={this.renderInput}
+            // autoComplete='none'
+            />
+        </fieldset>
+        <fieldset>
+          <Field
+            name='weight'
+            // type='password'
+            // label='password'
+            // component={this.renderInput}
+            // autoComplete='none'
+            />
+        </fieldset>
+        <fieldset>
+          <Field
+            name='activityLevel'
+            // type='password'
+            // label='password'
+            // component={this.renderInput}
+            // autoComplete='none'
+            />
+        </fieldset>
         <button>Signup</button>
       </form>
     )
