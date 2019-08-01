@@ -15,6 +15,6 @@ router.route('/test')
 
 router.use('/auth', authRoutes);
 router.use('/todo', todoRoutes);
-router.use('/meals', mealRoutes);
+router.use('/meal', mealRoutes);
 
 module.exports = router;
