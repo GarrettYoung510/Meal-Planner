@@ -17,7 +17,9 @@ import Signout from "./containers/Signout";
 import Meals from './containers/Meals';
 
 // Import components
-import Main from "./components/Pages/Main";
+import Main from './components/Pages/Main';
+import MealSelect from './components/Pages/MealSelect';
+import Navbar from './components/Partials/Navbar/Navbar'
 
 import reducers from "./reducers";
 import MealSelect from "./components/Pages/MealSelect";
@@ -37,22 +39,20 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/signup" component={Signup} />
+
+        <Navbar/>
+        <Route exact path='/' component={Main}/>
+        <Route exact path='/signup' component={Signup}/>
+        {/* <Route exact path='/profile' component={Profile}/> */}
+
         {/* <Route exact path='/:id' component={Profile}/>
         <Route exact path='/mealselect' component={MealSelect}/>
         <Route exact path='/grocerylist' component={GroceryList}/> */}
-<<<<<<< HEAD
 
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signout" component={Signout} />
         <Route exact path="/mealselect" component={MealSelect} />
-=======
-        
-        <Route exact path='/signin' component={Signin}/>
-        <Route exact path='/signout' component={Signout}/>
-        <Route exact path='/meals' component={Meals}/>
->>>>>>> 34dae0f412ab19bdb6a1f070b12e0325c3e09e5c
+
         {/* <Route exact path='/counter' component={Counter}/>
         <Route exact path='/stuff' component={Stuff}/>
         <Route exact path='/todo' component={Todo}/> */}
