@@ -16,8 +16,11 @@ router.route("/test").get(authMiddleware.requireAuth, (req, res) => {
 
 
 router.use('/auth', authRoutes);
+
+router.use('/todo', todoRoutes);
+router.use('/meal', mealRoutes);
+
 router.use('/calc', calcRoutes);
 // router.use('/meals', mealRoutes);
-
 
 module.exports = router;
