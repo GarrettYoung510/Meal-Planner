@@ -20,21 +20,21 @@ const MealCarousel = () => {
       </div>
       <div className="carousel-item0-inner">
         <div className="carousel-item active">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src="" className="d-block w-100" alt="..." />
           <div className="item0-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </div>
         </div>
         <div className="carousel-item1">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src="" className="d-block w-100" alt="..." />
           <div className="item1-caption d-none d-md-block">
             <h5>Second slide label</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </div>
         <div className="carousel-item2">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src="" className="d-block w-100" alt="..." />
           <div className="item2-caption d-none d-md-block">
             <h5>Third slide label</h5>
             <p>
