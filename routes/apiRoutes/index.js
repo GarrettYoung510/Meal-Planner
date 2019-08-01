@@ -2,6 +2,7 @@
 const router      = require('express').Router();
 const authRoutes  = require('./authRoutes');
 const calcRoutes = require('./calcRoutes');
+const mealRoutes = require('./mealRoutes');
 
 // const mealRoutes = require('./mealRoutes');
 
@@ -17,7 +18,7 @@ router.route("/test").get(authMiddleware.requireAuth, (req, res) => {
 
 router.use('/auth', authRoutes);
 
-router.use('/todo', todoRoutes);
+// router.use('/todo', todoRoutes);
 router.use('/meal', mealRoutes);
 
 router.use('/calc', calcRoutes);
