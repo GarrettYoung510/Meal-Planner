@@ -1,6 +1,7 @@
 const router      = require('express').Router();
 const authRoutes  = require('./authRoutes');
 const todoRoutes =  require('./todoRoutes');
+const mealRoutes = require('./mealRoutes');
 
 const passportService = require('./../../services/passport');
 
@@ -14,5 +15,6 @@ router.route('/test')
 
 router.use('/auth', authRoutes);
 router.use('/todo', todoRoutes);
+router.use('/meals', mealRoutes);
 
 module.exports = router;
