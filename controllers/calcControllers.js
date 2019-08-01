@@ -20,7 +20,9 @@ getBMR: async (req, res) => {
             return res.json({calories: femaleBMR * 1.725})
         }else if (req.body.activityLevel === 5) {
             return res.json({calories: femaleBMR * 1.9})
-        }
+        }else
+        // return console.error();
+        
     
     }
     if(gender === 'male'){
