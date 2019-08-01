@@ -8,9 +8,7 @@ const Card = props => {
         <h5 className="card-title">{props.body1}</h5>
         <hr />
         <p className="card-text">{props.body2}</p>
-        <a href={props.href} className="btn btn-primary">
-          Hi
-        </a>
+        {props.children}
       </div>
     </div>
   );

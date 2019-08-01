@@ -9,6 +9,7 @@ import Signin from "../../../containers/Signin";
 import Signup from "../../../containers/Signup";
 import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
+import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
 class MealSelect extends Component {
   componentDidMount() {
@@ -25,7 +26,9 @@ class MealSelect extends Component {
   // gets random meal from api can be our featured meal?
   getRandomMeal = async () => {
     try {
-      const data = await axios.get("https://www.themealdb.com/api/json/v1/1/random.php");
+      const data = await axios.get(
+        "https://www.themealdb.com/api/json/v1/1/random.php"
+      );
       console.log(data);
       console.log(data.data.meals[0]);
       console.log(data.data.meals[0].strMeal);
@@ -34,7 +37,7 @@ class MealSelect extends Component {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   getMealOfType = async () => {
     try {
@@ -42,14 +45,16 @@ class MealSelect extends Component {
       // 'breakfast', 'dessert'
 
       // lunch and dinner will have a dropdown due to categories available including
-      // 'beef', 'chicken', 'goat', 'lamb', 'pasta', 'pork', 'seafood', 'vegan', 'vegetarian' 
+      // 'beef', 'chicken', 'goat', 'lamb', 'pasta', 'pork', 'seafood', 'vegan', 'vegetarian'
 
-      // 'side', 'starter' - this seems like the closest to a snack category but lists appetizers 
+      // 'side', 'starter' - this seems like the closest to a snack category but lists appetizers
       // 'miscellaneous' - sends out random do not use this category
 
-      // we will pull type from the dropdown 
-      let type = 'starter';
-      const data = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + type);
+      // we will pull type from the dropdown
+      let type = "starter";
+      const data = await axios.get(
+        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + type
+      );
       console.log(data);
       // // pulls first meal generated
       // console.log(data.data.meals[0]);
@@ -63,22 +68,21 @@ class MealSelect extends Component {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
 
-
-  // 
-  nutrientsPost = async (mealSelected) => {
+  //
+  nutrientsPost = async mealSelected => {
     const URL = "/api/meal";
 
     try {
       const data = await axios({
         url: URL,
         method: "POST",
-        data: {meal: mealSelected},
+        data: { meal: mealSelected }
       });
       console.log(data);
       // add total calories per ingredients found
@@ -93,13 +97,9 @@ class MealSelect extends Component {
     }
   };
 
-
-
   render() {
     return (
       <div className="App">
-        <Navbar />
-
         <Container>
           <Row>
             <h1>Meal Select Page</h1>
@@ -144,6 +144,8 @@ class MealSelect extends Component {
               <h1>Link to shopping list generator goes here</h1>
             </Container>
           </Row>
+
+          <ShoppingLinks />
         </Container>
       </div>
     );
