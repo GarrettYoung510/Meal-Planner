@@ -14,6 +14,7 @@ import Signin from "./containers/Signin";
 import Signout from "./containers/Signout";
 
 // import Todo from './containers/Todo';
+import Meals from './containers/Meals';
 
 // Import components
 import Main from "./components/Pages/Main";
@@ -41,10 +42,17 @@ ReactDOM.render(
         {/* <Route exact path='/:id' component={Profile}/>
         <Route exact path='/mealselect' component={MealSelect}/>
         <Route exact path='/grocerylist' component={GroceryList}/> */}
+<<<<<<< HEAD
 
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signout" component={Signout} />
         <Route exact path="/mealselect" component={MealSelect} />
+=======
+        
+        <Route exact path='/signin' component={Signin}/>
+        <Route exact path='/signout' component={Signout}/>
+        <Route exact path='/meals' component={Meals}/>
+>>>>>>> 34dae0f412ab19bdb6a1f070b12e0325c3e09e5c
         {/* <Route exact path='/counter' component={Counter}/>
         <Route exact path='/stuff' component={Stuff}/>
         <Route exact path='/todo' component={Todo}/> */}
