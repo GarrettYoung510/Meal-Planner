@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./../../Partials/Navbar/Navbar";
-import Container from "./../../Partials/Container/Container";
-import Row from "./../../Partials/Row/Row";
-import Column from "./../../Partials/Column/Column";
-import Jumbotron from "./../../Partials/Jumbotron/Jumbotron";
+import Navbar from "../../Partials/Navbar/Navbar";
+import Container from "../../Partials/Container/Container";
+import Row from "../../Partials/Row/Row";
+import Column from "../../Partials/Column/Column";
+import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 
 const Main = () => {
