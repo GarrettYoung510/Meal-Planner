@@ -5,7 +5,6 @@
 
 module.exports = {
     //bmr calc for gender selection//calories = BMR + activity level
-    //finised = displaying daily calorie count
     //Macro calc = Fat=.29 x (cal/9), Protein .18 x (cal/4), Carb .53 x (cal/4)
 getBMR: async (req, res) => {
     console.log(req.body)
