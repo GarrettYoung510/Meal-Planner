@@ -3,23 +3,57 @@
 //pull out params for calc
 //  user
 
-
 module.exports = {
     //bmr calc for gender selection//calories = BMR + activity level
+    //finised = displaying daily calorie count
+    //Macro calc = Fat=.29 x (cal/9), Protein .18 x (cal/4), Carb .53 x (cal/4)
 getBMR: async (req, res) => {
+    console.log(req.body)
     const {gender} = req.body;
     if(gender === 'female'){
-        const femaleBMR = 655 + (4.3 * user.weight) + (4.7 * user.height) - (4.7 * user.age);
-        if(req.body.activityLevel === 1) {
-            return res.json({ calories: femaleBMR * 1.2 });
-        } else if(req.body.activityLevel === 2) {
-            return res.json({calories: femaleBMR * 1.375})
-        }else if(req.body.activityLevel === 3) {
-            return res.json({calories: femaleBMR * 1.55})
-        }else if(req.body.activityLevel === 4) {
-            return res.json({calories: femaleBMR * 1.725})
-        }else if (req.body.activityLevel === 5) {
-            return res.json({calories: femaleBMR * 1.9})
+        const femaleBMR = 655 + (4.3 * parseInt(req.body.weight)) + (4.7 * parseInt(req.body.height)) - (4.7 * parseInt(req.body.age));
+        
+        if(parseInt(req.body.activityLevel) === 1) {
+            const calories = femaleBMR * 1.2;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros})
+        
+        } else if(parseInt(req.body.activityLevel) === 2) {
+            const calories = femaleBMR * 1.375;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros})
+        
+        
+        }else if(parseInt(req.body.activityLevel) === 3) {
+            const calories = femaleBMR * 1.55;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros})
+        
+        }else if(parseInt(req.body.activityLevel) === 4) {
+            const calories = femaleBMR * 1.725;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros})
+        
+        }else if (parseInt(req.body.activityLevel) === 5) {
+            const calories = femaleBMR * 1.9
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros})
+        
         } else {
             return (error);
         }
@@ -27,20 +61,53 @@ getBMR: async (req, res) => {
     
     }
     if(gender === 'male'){
-        const maleBMR = 66 + (6.3 * user.weight) + (12.9 * user.height) - (6.8 * user.age);
-        if(req.body.activityLevel === 1) {
-            return res.json({ calories: maleBMR * 1.2 });
-        } else if(req.body.activityLevel === 2){
-            return res.json({ calories: maleBMR * 1.375 });
-        }else if(req.body.activityLevel === 3) {
-            return res.json({calories: maleBMR * 1.55})
-        }else if(req.body.activityLevel === 4) {
-            return res.json({calories: maleBMR * 1.725})
-        }else if (req.body.activityLevel === 5) {
-            return res.json({calories: maleBMR * 1.9})
+        const maleBMR = 66 + (6.3 * parseInt(req.body.weight)) + (12.9 * parseInt(req.body.height)) - (6.8 * parseInt(req.body.age));
+        if(parseInt(req.body.activityLevel) === 1) {
+            const calories = maleBMR * 1.2;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({ calories, Macros  }); // if AL=1 + (maleBMR*1.2) = Display Calories
+        
+        } else if(parseInt(req.body.activityLevel) === 2){
+            const calories = maleBMR * 1.375;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+
+            return res.json({ calories, Macros }); 
+        
+        }else if(parseInt(req.body.activityLevel) === 3) {
+            const calories = maleBMR * 1.55;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({calories, Macros})
+        
+        }else if(parseInt(req.body.activityLevel) === 4) {
+            const calories = maleBMR * 1.725;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({calories, Macros})
+        
+        }else if (parseInt(req.body.activityLevel) === 5) {
+            const calories = maleBMR * 1.9;
+            const Fat = parseInt(.29 * (calories/9));
+            const Protein = parseInt(.18 * (calories/4)); 
+            const Carb = parseInt(.53 * (calories/4)); 
+            const Macros = {Fat, Protein, Carb};
+            return res.json({calories, Macros})
+        
+        }else {
+            return (error);
         }
     }
 }
 
-//Macro calc = Fat=.29 x (cal/9), Protein .18 x (cal/4), Carb .53 x (cal/4)
+
 }
