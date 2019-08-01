@@ -6,16 +6,17 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 // Import Containers
-import App from './containers/App';
-import Counter from './containers/Counter';
-import Stuff from './containers/Stuff';
+import App from './App';
+// import Counter from './containers/Counter';
+// import Stuff from './containers/Stuff';
 import Signup from './containers/Signup';
 import Signin from './containers/Signin';
 import Signout from './containers/Signout';
-import Todo from './containers/Todo';
+// import Todo from './containers/Todo';
+import Meals from './containers/Meals';
 
 // Import components
-import Welcome from './components/Welcome';
+import Main from './components/Pages/Main';
 
 import reducers from './reducers';
 
@@ -35,13 +36,19 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
-        <Route exact path='/' component={Welcome}/>
-        <Route exact path='/counter' component={Counter}/>
-        <Route exact path='/stuff' component={Stuff}/>
+        <Route exact path='/' component={Main}/>
         <Route exact path='/signup' component={Signup}/>
+        {/* <Route exact path='/:id' component={Profile}/>
+        <Route exact path='/mealselect' component={MealSelect}/>
+        <Route exact path='/grocerylist' component={GroceryList}/> */}
+        
         <Route exact path='/signin' component={Signin}/>
         <Route exact path='/signout' component={Signout}/>
-        <Route exact path='/todo' component={Todo}/>
+        <Route exact path='/meals' component={Meals}/>
+        {/* <Route exact path='/counter' component={Counter}/>
+        <Route exact path='/stuff' component={Stuff}/>
+        <Route exact path='/todo' component={Todo}/> */}
+        
       </App>
     </Router>
   </Provider>
