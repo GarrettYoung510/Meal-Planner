@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { addTodo, fetchTodos } from "../actions";
-
-
+import { fetchMeals } from "../actions";
 
 import requireAuth from './../hoc/requireAuth';
 
-class Todo extends Component {
+class Meal extends Component {
 
   componentDidMount() {
-    this.props.fetchTodos();
+    this.props.fetchMeals();
   }
 
-  onSubmit = formValues => {
-    this.props.addTodo(formValues);
-  }
+//   onSubmit = formValues => {
+//     this.props.addTodo(formValues);
+//   }
 
-  renderTodos() {
-    return this.props.todos.map(todo => {
+  renderMeals() {
+    return this.props.meals.map(meal => {
       return (
-        <div key={todo._id}>
-          <p>{todo._id}</p>
-          <p>{todo.description}</p>
-          <p>{todo.completed.toString()}</p>
+        <div key={meal._id}>
+          <p>{meal._id}</p>
+          <p>{meal.description}</p>
+          {/* <p>{todo.completed.toString()}</p> */}
         </div>
       );
     })
@@ -32,32 +30,32 @@ class Todo extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props.todos);
+    console.log(this.props.meals);
     return(
       <div>
         <form onSubmit={handleSubmit(this.onSubmit)}>
-          <label>Todo Description</label>
+          <label>Meal Selection</label>
           <Field
             name='description'
             type='text'
             component='input'
             autoComplete='none'
           />
-          <button>Add todo</button>
+          <button>Add meal</button>
         </form>
-        {this.renderTodos()}
+        {this.renderMeals()}
       </div>
     );
   }
 }
 
-function mapStateToProps({ todo }) {
-  return { todos: todo.todos };
+function mapStateToProps({ meal }) {
+  return { meals: meal.meals };
 }
 
 const formedComponent = compose(
-  connect(mapStateToProps, { addTodo, fetchTodos }),
-  reduxForm({ form: 'Add todo'})
-)(Todo);
+  connect(mapStateToProps, { fetchMeals }),
+  reduxForm({ form: 'Add meal'})
+)(Meal);
 
 export default requireAuth(formedComponent);

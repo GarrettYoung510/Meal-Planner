@@ -1,4 +1,4 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER, AUTH_USER, AUTH_ERROR, ADD_TODO, TODO_ERROR, FETCH_TODOS } from "./types";
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, AUTH_USER, AUTH_ERROR, ADD_TODO, TODO_ERROR, FETCH_TODOS, FETCH_MEALS, MEALS_ERROR } from "./types";
 import axios from 'axios';
 
 
@@ -55,6 +55,18 @@ export const fetchTodos = () => async dispatch => {
     dispatch({ type: FETCH_TODOS, payload: response.data.todos });
   } catch(e) {
     dispatch({ type: TODO_ERROR, payload: 'Something bad happened' });
+  }
+}
+
+export const fetchMeals = () => async dispatch => {
+  try {
+    const response = await axios.get('/api/todo', {
+      headers: { authorization: localStorage.getItem('token')}
+    });
+
+    dispatch({ type: FETCH_MEALS, payload: response.data.meals })
+  } catch (e) {
+    dispatch({ type: MEALS_ERROR, payload: 'Error pulling meals'})
   }
 }
 

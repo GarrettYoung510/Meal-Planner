@@ -5,11 +5,23 @@ const Schema = mongoose.Schema;
 
 const validator = require('validator');
 
+// const validateName = function(name){
+//   return validator.isAlpha(name);
+// };
+
 const validateEmail = function(email){
   return validator.isEmail(email);
 };
 
 const UserSchema = new Schema({
+  first_name: {
+    type: String,
+    required: true,
+  },
+  last_name: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -24,12 +36,26 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  todos: [
-    {
-      ref: 'Todo',
-      type: Schema.Types.ObjectId
-    }
-  ]
+  height: {
+    type: Number,
+    required: true,
+},
+  weight: {
+    type: Number,
+    required: true,
+},
+  age: {
+    type: Number,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  activity: {
+    type: String,
+    required: true,
+  }
 });
 
 UserSchema.pre('save', async function(next){
