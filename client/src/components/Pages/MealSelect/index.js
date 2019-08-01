@@ -1,5 +1,9 @@
-import React from "react";
+import React, { Component } from 'react';
 import Container from "./../../Partials/Container/Container";
+import Row from './../../Partials/Row/Row';
+import Column from './../../Partials/Column/Column';
+import Card from './../../Partials/Card/Card';
+
 
 class MealSelect extends Component {
   render() {

@@ -27,7 +27,7 @@ const Column = props => {
     styleClass.slice(0, -1);
   }
 
-  console.log(styleClass);
+  // console.log(styleClass);
   return <div className={styleClass}>{props.children}</div>;
 };
 
