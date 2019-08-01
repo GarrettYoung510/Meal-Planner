@@ -3,10 +3,12 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { signup } from "../actions";
-import validator from "validator";
-import Container from "./../components/Partials/Container/Container";
-import Row from "./../components/Partials/Row/Row";
-import Column from "./../components/Partials/Column/Column";
+
+import validator from 'validator';
+import Container from './../components/Partials/Container/Container';
+import Row from './../components/Partials/Row/Row';
+import Column from './../components/Partials/Column/Column';
+import Footer from './../components/Partials/Footer/Footer';
 
 class Signup extends Component {
   renderErrors = ({ error, touched }) => {
@@ -17,23 +19,7 @@ class Signup extends Component {
         </div>
       );
     }
-  };
-
-  //   <div class="form-group">
-  //     <label for="exampleInputEmail1">Email address</label>
-  //     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-  //     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  //   </div>
-  //   <div class="form-group">
-  //     <label for="exampleInputPassword1">Password</label>
-  //     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  //   </div>
-  //   <div class="form-group form-check">
-  //     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-  //     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  //   </div>
-  //   <button type="submit" class="btn btn-primary">Submit</button>
-  // </form>
+  }
 
   renderInput = ({
     name,
@@ -86,27 +72,56 @@ class Signup extends Component {
     placeholder
   }) => {
     // console.log(meta);
+    const output = function(){
+      if(input.name === "height") {
+        const feet = Math.floor(input.value/12)
+        const inches = input.value - (feet * 12)
+        if(inches > 0) {
+          return feet + "' " + inches + '"'
+        }else{
+          return feet + "'"
+        }
+      }
+      if(input.name === "weight") {
+        return input.value + " lbs."
+      }
+      if(input.name === "age") {
+        return input.value
+      }
+      if(input.name === "activity_level") {
+        if(parseInt(input.value) === 1){
+          return "Sedentary"
+        }else if(parseInt(input.value) === 2){
+          return "Less Active"
+        }else if(parseInt(input.value) === 3){
+          return "Moderately Active"
+        }else if(parseInt(input.value) === 4){
+          return "Very Active"
+        }
+      }
+    } 
     return (
       <Row className="d-flex justify-content-center mb-3">
         <Column small="12" medium="2">
           <label>{label}</label>
         </Column>
-        <Column small="12" medium="7">
+        <Column small="12" medium="8">
           <div>
-            <input
-              type={type}
-              min={min}
-              max={max}
-              {...input}
-              autoComplete="off"
-              className={className}
-              placeholder={placeholder}
+            <input 
+              type={type} 
+              min={min} 
+              max={max} 
+              {...input} 
+              autoComplete='off' 
+              className={className} 
+              placeholder={placeholder} 
+
             />
             {this.renderErrors(meta)}
           </div>
         </Column>
         <Column small="12" medium="1">
-          <p>{input.value}</p>
+            <p>{output()}</p>
         </Column>
       </Row>
     );
@@ -123,27 +138,15 @@ class Signup extends Component {
   }) => {
     // console.log(meta);
     return (
-      <Container>
-        <Row className="d-flex justify-content-center mb-3">
-          <Column>
-            <p>{label}</p>
-          </Column>
-          <Column>
-            <div>
-              <input type={type} {...input} autoComplete="off" />
-              {this.renderErrors(meta)}
-            </div>
-          </Column>
-          <Column>
-            <p>{input.value}</p>
-          </Column>
-        </Row>
-      </Container>
+      <span className="px-2">
+        {label} <input type={type} {...input} autoComplete='off'/>
+        {this.renderErrors(meta)}
+      </span>
     );
   };
 
   onSubmit = formValues => {
-    console.log(formValues);
+    // console.log(formValues);
     this.props.signup(formValues, () => {
       this.props.history.push("/profile/:id");
     });
@@ -153,7 +156,14 @@ class Signup extends Component {
     // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
+      <>
       <Container>
+        <br/>
+        <br/>
+        <h1>Welcome to Meal Planner</h1>
+        <br/>
+        <h5>Please enter the below information</h5>
+        <br/>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <fieldset>
             <Field
@@ -166,6 +176,7 @@ class Signup extends Component {
               placeholder="Enter email"
             />
           </fieldset>
+          <br/>
           <fieldset>
             <Field
               name="password"
@@ -177,6 +188,7 @@ class Signup extends Component {
               placeholder="Enter password"
             />
           </fieldset>
+          <br/>
           <fieldset>
             <Field
               name="first_name"
@@ -188,6 +200,7 @@ class Signup extends Component {
               placeholder="Enter First Name"
             />
           </fieldset>
+          <br/>
           <fieldset>
             <Field
               name="last_name"
@@ -199,22 +212,33 @@ class Signup extends Component {
               placeholder="Enter Last Name"
             />
           </fieldset>
+          <br/>
           <fieldset>
-            <Field
-              name="gender"
-              component={this.renderRadioInput}
-              type="radio"
-              value="male"
-              className="form-control"
-            />
-            <Field
-              name="gender"
-              component={this.renderRadioInput}
-              type="radio"
-              value="female"
-              className="form-control"
-            />
+            <Row className="d-flex justify-content-center mb-3">
+              <Column small="12" medium="2">
+                <label>Gender</label>
+              </Column>
+              <Column small="12" medium="9">
+                <Field 
+                  name="gender" 
+                  label="Male"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="male"
+                  className="form-control mx-3" 
+                />
+                <Field 
+                  name="gender" 
+                  label="Female"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="female"
+                  className="form-control mx-3" 
+                /> 
+              </Column>
+            </Row>
           </fieldset>
+          <br/>
           <fieldset>
             <Field
               name="height"
@@ -224,46 +248,89 @@ class Signup extends Component {
               max="96"
               step="1"
               component={this.renderRangeInput}
-              autoComplete="none"
+              autoComplete='none'
+              className="form-control" 
             />
           </fieldset>
+          <br/>
           <fieldset>
             <Field
-              name="weight"
-              type="range"
-              label="Weight in Lbs."
-              min="75"
-              max="400"
+              name='weight'
+              type='range'
+              label='Weight in Lbs.'
+              min='75'
+              max='350'
               component={this.renderRangeInput}
-              autoComplete="none"
+              autoComplete='none'
+              className="form-control" 
             />
           </fieldset>
+          <br/>
           <fieldset>
             <Field
-              name="age"
-              type="range"
-              label="Age in Years"
-              min="18"
-              max="115"
+              name='age'
+              type='range'
+              label='Age in Years'
+              min='16'
+              max='115'
               component={this.renderRangeInput}
-              autoComplete="none"
+              autoComplete='none'
+              className="form-control" 
             />
           </fieldset>
+          <br/>
           <fieldset>
-            <Field
-              name="activity_level"
-              type="range"
-              min="1"
-              max="4"
-              step="1"
-              label="Level of Normal Activity"
-              component={this.renderRangeInput}
-              autoComplete="none"
-            />
+            <Row>
+              <Column small="12" medium="2">
+                <label>Activity Level</label>
+              </Column>
+              <Column small="12" medium="9">
+                <Field 
+                  name="activity_level" 
+                  label="Sedentary"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="1"
+                  className="form-control" 
+                />
+                <Field 
+                  name="activity_level" 
+                  label="Less Active"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="2"
+                  className="form-control" 
+                /> 
+                <Field 
+                  name="activity_level" 
+                  label="Moderately Active"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="3"
+                  className="form-control" 
+                /> 
+                <Field 
+                  name="activity_level" 
+                  label="Very Active"
+                  component={this.renderRadioInput} 
+                  type="radio" 
+                  value="4"
+                  className="form-control" 
+                /> 
+              </Column>
+            </Row>
           </fieldset>
-          <button>Signup</button>
+          <br/>
+          <br/>
+          <h5>Signup submits your information anonymously for custom results</h5>
+          <br/>
+          <button type="button" className="btn btn-lg btn-success">Signup</button>
+          <br/>
+          <br/>
         </form>
       </Container>
+      <Footer/>
+      </>
     );
   }
 }
@@ -274,7 +341,7 @@ function mapStateToProps(state) {
 
 const validate = formValues => {
   const errors = {};
-  console.log("validator", formValues);
+  // console.log("validator", formValues);
 
   if (!formValues.email) {
     errors.email = "You must enter an email";
