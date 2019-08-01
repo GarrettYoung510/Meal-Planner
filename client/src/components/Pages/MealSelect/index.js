@@ -32,6 +32,7 @@ class MealSelect extends Component {
           {/* Lunch carousel */}
           <Row>
             <h3>Lunch</h3>
+            {/* lunch main course dropdown */}
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -84,6 +85,51 @@ class MealSelect extends Component {
           {/* Dinner carousel */}
           <Row>
             <h3>Dinner</h3>
+            {/* dinner main course dropdown */}
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Select Main Course
+              </button>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a className="dropdown-item" href="#">
+                  Beef
+                </a>
+                <a className="dropdown-item" href="#">
+                  Chicken
+                </a>
+                <a className="dropdown-item" href="#">
+                  Goat
+                </a>
+                <a className="dropdown-item" href="#">
+                  Lamb
+                </a>
+                <a className="dropdown-item" href="#">
+                  Pasta
+                </a>
+                <a className="dropdown-item" href="#">
+                  Pork
+                </a>
+                <a className="dropdown-item" href="#">
+                  Seafood
+                </a>
+                <a className="dropdown-item" href="#">
+                  Vegan
+                </a>
+                <a className="dropdown-item" href="#">
+                  Vegetarian
+                </a>
+              </div>
+            </div>
           </Row>
           <Row>
             <MealCarousel />
