@@ -16,26 +16,48 @@ class Signup extends Component {
     }
   }
 
-  renderInput = ({ input, label, meta }) => {
-    console.log(meta);
+  renderInput = ({ name, input, label, meta, type, choice, min, max}) => {
+    // console.log(meta);
     return (
-      <div>
+      <div className={name}>
         <label>{label}</label>
-        <input {...input} autoComplete='off'/>
-        {this.renderErrors(meta)}
+        <div>
+          <input type={type} min={min} max={max} {...input} autoComplete='off'/>
+          {this.renderErrors(meta)}
+        </div>
+      </div>
+    );
+  }
+  
+  renderInputDisplay = ({ name, input, label, meta, type, min, max, }) => {
+    // console.log(meta);
+    // findValue = formValues => {
+    //   console.log(formValues)
+    // }
+    console.log(input.value);
+    return (
+      <div className={input.name}>
+        <label>{label}</label>
+        <div>
+          <span>
+            <input type={type} min={min} max={max} {...input} autoComplete='off'/>
+              {this.renderErrors(meta)} 
+              {input.value}
+          </span>
+        </div>
       </div>
     );
   }
 
-  onSubmit = formProps => {
-    console.log(formProps);
-    this.props.signup(formProps, () => {
-      this.props.history.push('/counter');
+  onSubmit = formValues => {
+    console.log(formValues);
+    this.props.signup(formValues, () => {
+      this.props.history.push('/profile/:id');
     });
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -51,44 +73,77 @@ class Signup extends Component {
           <Field
             name='password'
             type='password'
-            label='password'
+            label='Password'
             component={this.renderInput}
             autoComplete='none'/>
         </fieldset>
         <fieldset>
           <Field
-            name='gender'
-            // type='password'
-            // label='password'
-            // component={this.renderInput}
-            // autoComplete='none'
-            />
+            name='first_name'
+            type='text'
+            label='First Name'
+            component={this.renderInput}
+            autoComplete='none'/>
+        </fieldset>
+        <fieldset>
+          <Field
+            name='last_name'
+            type='text'
+            label='Last Name'
+            component={this.renderInput}
+            autoComplete='none'/>
+        </fieldset>
+        <fieldset>
+          <label>Gender</label>
+          <div>
+            <label><Field name="gender" component="input" type="radio" value="male"/> Male</label>
+            <label><Field name="gender" component="input" type="radio" value="female"/> Female</label>
+          </div>
         </fieldset>
         <fieldset>
           <Field
             name='height'
-            // type='password'
-            // label='password'
-            // component={this.renderInput}
-            // autoComplete='none'
+            type='range'
+            label='Height'
+            min='40'
+            max='96'
+            step='1'
+            component={this.renderInputDisplay}
+            autoComplete='none'
             />
         </fieldset>
         <fieldset>
           <Field
             name='weight'
-            // type='password'
-            // label='password'
-            // component={this.renderInput}
-            // autoComplete='none'
+            type='number'
+            label='Weight in Lbs.'
+            min='75'
+            max='400'
+            component={this.renderInput}
+            autoComplete='none'
             />
         </fieldset>
         <fieldset>
           <Field
-            name='activityLevel'
-            // type='password'
-            // label='password'
-            // component={this.renderInput}
-            // autoComplete='none'
+            name='age'
+            type='number'
+            label='Age in Years'
+            min='18'
+            max='115'
+            component={this.renderInput}
+            autoComplete='none'
+            />
+        </fieldset>
+        <fieldset>
+          <Field
+            name='activity_level'
+            type='range'
+            min='1'
+            max='4'
+            step='1'
+            label='Level of Normal Activity'
+            component={this.renderInputDisplay}
+            autoComplete='none'
             />
         </fieldset>
         <button>Signup</button>
