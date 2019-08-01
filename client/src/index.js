@@ -14,13 +14,16 @@ import Signin from "./containers/Signin";
 import Signout from "./containers/Signout";
 
 // import Todo from './containers/Todo';
-import Meals from './containers/Meals';
+// import Meals from "./containers/Meals";
 
 // Import components
 import Main from "./components/Pages/Main";
+import Navbar from "./components/Partials/Navbar/Navbar";
 
 import reducers from "./reducers";
 import MealSelect from "./components/Pages/MealSelect";
+import ProfilePage from "./components/Pages/ProfilePage/index";
+import ShoppingList from "./components/Pages/ShoppingList/index";
 
 // configure redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -37,8 +40,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
+        <Navbar />
         <Route exact path="/" component={Main} />
         <Route exact path="/signup" component={Signup} />
+        {/* <Route exact path='/profile' component={Profile}/> */}
+
         {/* <Route exact path='/:id' component={Profile}/>
         <Route exact path='/mealselect' component={MealSelect}/>
         <Route exact path='/grocerylist' component={GroceryList}/> */}
@@ -46,6 +52,8 @@ ReactDOM.render(
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signout" component={Signout} />
         <Route exact path="/mealselect" component={MealSelect} />
+        <Route exact path="/profilepage" component={ProfilePage} />
+        <Route exact path="/shoppinglist" component={ShoppingList} />
         {/* <Route exact path='/counter' component={Counter}/>
         <Route exact path='/stuff' component={Stuff}/>
         <Route exact path='/todo' component={Todo}/> */}
