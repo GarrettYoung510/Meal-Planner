@@ -16,6 +16,8 @@ import Signout from './containers/Signout';
 
 // Import components
 import Main from './components/Pages/Main';
+import MealSelect from './components/Pages/MealSelect';
+import Navbar from './components/Partials/Navbar/Navbar'
 
 import reducers from './reducers';
 
@@ -35,8 +37,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
+        <Navbar/>
         <Route exact path='/' component={Main}/>
         <Route exact path='/signup' component={Signup}/>
+        {/* <Route exact path='/profile' component={Profile}/> */}
         {/* <Route exact path='/:id' component={Profile}/>
         <Route exact path='/mealselect' component={MealSelect}/>
         <Route exact path='/grocerylist' component={GroceryList}/> */}
