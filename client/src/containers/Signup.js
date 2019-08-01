@@ -4,6 +4,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { signup } from "../actions";
 import validator from 'validator';
+import Container from './../components/Partials/Container/Container'
+import Row from './../components/Partials/Row/Row'
+import Column from './../components/Partials/Column/Column'
 
 class Signup extends Component {
   renderErrors = ({ error, touched }) => {
@@ -16,36 +19,83 @@ class Signup extends Component {
     }
   }
 
-  renderInput = ({ name, input, label, meta, type, choice, min, max}) => {
+
+//   <div class="form-group">
+//     <label for="exampleInputEmail1">Email address</label>
+//     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+//     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+//   </div>
+//   <div class="form-group">
+//     <label for="exampleInputPassword1">Password</label>
+//     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+//   </div>
+//   <div class="form-group form-check">
+//     <input type="checkbox" class="form-check-input" id="exampleCheck1">
+//     <label class="form-check-label" for="exampleCheck1">Check me out</label>
+//   </div>
+//   <button type="submit" class="btn btn-primary">Submit</button>
+// </form>
+
+
+  renderInput = ({ name, input, label, meta, type, min, max, className, id, placeholder}) => {
     // console.log(meta);
     return (
-      <div className={name}>
-        <label>{label}</label>
-        <div>
-          <input type={type} min={min} max={max} {...input} autoComplete='off'/>
-          {this.renderErrors(meta)}
-        </div>
-      </div>
+      <Container>
+        <Row className={name} className='d-flex justify-content-center mb-3'>
+          <Column small="12" medium="2" className="d-flex align-items-center">
+            <div>{label}</div>
+          </Column>
+          <Column small="12" medium="9">
+            <div>
+              <input type={type} min={min} max={max} {...input} autoComplete='off' className={className} id={id} placeholder={placeholder} />
+              {this.renderErrors(meta)}
+            </div>
+          </Column>
+        </Row>
+      </Container>
     );
   }
-  
-  renderInputDisplay = ({ name, input, label, meta, type, min, max, }) => {
+
+  renderRangeInput = ({ name, input, label, meta, type, min, max, className, placeholder}) => {
     // console.log(meta);
-    // findValue = formValues => {
-    //   console.log(formValues)
-    // }
-    console.log(input.value);
     return (
-      <div className={input.name}>
-        <label>{label}</label>
-        <div>
-          <span>
-            <input type={type} min={min} max={max} {...input} autoComplete='off'/>
-              {this.renderErrors(meta)} 
-              {input.value}
-          </span>
-        </div>
-      </div>
+      <Row className={name} className="d-flex justify-content-center mb-3">
+        <Column small="12" medium="2">
+          <label>{label}</label>
+        </Column>
+        <Column small="12" medium="7">
+          <div>
+            <input type={type} min={min} max={max} {...input} autoComplete='off' className={className} placeholder={placeholder} />
+            {this.renderErrors(meta)}
+          </div>
+        </Column>
+        <Column small="12" medium="1">
+          <p>{input.value}</p>
+        </Column>
+      </Row>
+    );
+  }
+
+
+  renderRadioInput = ({ name, input, label, meta, type, className, placeholder }) => {
+    // console.log(meta);
+    return (
+      <Container>
+        <Row className={name} className="d-flex justify-content-center mb-3">
+          <Column>
+            <p>{label}</p>
+          </Column>
+          <Column>
+            <div>
+              <input type={type} {...input} autoComplete='off'/>
+              {this.renderErrors(meta)}
+            </div>
+          </Column>
+          <Column>
+            <p>{input.value}</p>
+          </Column>
+        </Row>
+      </Container>
     );
   }
 
@@ -60,94 +110,117 @@ class Signup extends Component {
     // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <Field
-            name='email'
-            type='text'
-            label='Email'
-            component={this.renderInput}
-            autoComplete='none'/>
-        </fieldset>
-        <fieldset>
-          <Field
-            name='password'
-            type='password'
-            label='Password'
-            component={this.renderInput}
-            autoComplete='none'/>
-        </fieldset>
-        <fieldset>
-          <Field
-            name='first_name'
-            type='text'
-            label='First Name'
-            component={this.renderInput}
-            autoComplete='none'/>
-        </fieldset>
-        <fieldset>
-          <Field
-            name='last_name'
-            type='text'
-            label='Last Name'
-            component={this.renderInput}
-            autoComplete='none'/>
-        </fieldset>
-        <fieldset>
-          <label>Gender</label>
-          <div>
-            <label><Field name="gender" component="input" type="radio" value="male"/> Male</label>
-            <label><Field name="gender" component="input" type="radio" value="female"/> Female</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <Field
-            name='height'
-            type='range'
-            label='Height'
-            min='40'
-            max='96'
-            step='1'
-            component={this.renderInputDisplay}
-            autoComplete='none'
+      <Container>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <fieldset>
+            <Field
+              name='email'
+              type='text'
+              label='Email'
+              component={this.renderInput}
+              autoComplete='none'
+              className="form-control" 
+              placeholder="Enter email"
             />
-        </fieldset>
-        <fieldset>
-          <Field
-            name='weight'
-            type='number'
-            label='Weight in Lbs.'
-            min='75'
-            max='400'
-            component={this.renderInput}
-            autoComplete='none'
+          </fieldset>
+          <fieldset>
+            <Field
+              name='password'
+              type='password'
+              label='Password'
+              component={this.renderInput}
+              autoComplete='none'
+              className="form-control" 
+              placeholder="Enter password"
             />
-        </fieldset>
-        <fieldset>
-          <Field
-            name='age'
-            type='number'
-            label='Age in Years'
-            min='18'
-            max='115'
-            component={this.renderInput}
-            autoComplete='none'
+          </fieldset>
+          <fieldset>
+            <Field
+              name='first_name'
+              type='text'
+              label='First Name'
+              component={this.renderInput}
+              autoComplete='none'
+              className="form-control" 
+              placeholder="Enter First Name"
             />
-        </fieldset>
-        <fieldset>
-          <Field
-            name='activity_level'
-            type='range'
-            min='1'
-            max='4'
-            step='1'
-            label='Level of Normal Activity'
-            component={this.renderInputDisplay}
-            autoComplete='none'
+          </fieldset>
+          <fieldset>
+            <Field
+              name='last_name'
+              type='text'
+              label='Last Name'
+              component={this.renderInput}
+              autoComplete='none'
+              className="form-control" 
+              placeholder="Enter Last Name"
             />
-        </fieldset>
-        <button>Signup</button>
-      </form>
+          </fieldset>
+          <fieldset>
+            <Field 
+              name="gender" 
+              component={this.renderRadioInput} 
+              type="radio" 
+              value="male"
+              className="form-control" 
+            />
+            <Field 
+              name="gender" 
+              component={this.renderRadioInput} 
+              type="radio" 
+              value="female"
+              className="form-control" 
+            /> 
+          </fieldset>
+          <fieldset>
+            <Field
+              name='height'
+              type='range'
+              label='Height'
+              min='40'
+              max='96'
+              step='1'
+              component={this.renderRangeInput}
+              autoComplete='none'
+            />
+          </fieldset>
+          <fieldset>
+            <Field
+              name='weight'
+              type='range'
+              label='Weight in Lbs.'
+              min='75'
+              max='400'
+              component={this.renderRangeInput}
+              autoComplete='none'
+            />
+          </fieldset>
+          <fieldset>
+            <Field
+              name='age'
+              type='range'
+              label='Age in Years'
+              min='18'
+              max='115'
+              component={this.renderRangeInput}
+              autoComplete='none'
+            />
+          </fieldset>
+          <fieldset>
+            <Field
+              name='activity_level'
+              type='range'
+              min='1'
+              max='4'
+              step='1'
+              label='Level of Normal Activity'
+              component={this.renderRangeInput}
+              autoComplete='none'
+            />
+          </fieldset>
+          <button>Signup</button>
+        </form>
+      </Container>
     )
   }
 }
