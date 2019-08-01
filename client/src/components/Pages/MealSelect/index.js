@@ -5,6 +5,10 @@ import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
 import axios from "axios";
 // import config from '../../../../../config.js';
+import Signin from "../../../containers/Signin";
+import Signup from "../../../containers/Signup";
+import Column from "../../Partials/Column/Column";
+import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 
 class MealSelect extends Component {
   componentDidMount() {
@@ -76,33 +80,39 @@ class MealSelect extends Component {
     return (
       <div className="App">
         <Navbar />
+
         <Container>
           <Row>
             <h1>Meal Select Page</h1>
           </Row>
         </Container>
+
         {/* Breakfast carousel */}
         <Container>
           <Row>
             <h3>Breakfast</h3>
           </Row>
-          <Row>
-            <MealCarousel />
-          </Row>
+          <MealCarousel />
           {/* Lunch carousel */}
           <Row>
             <h3>Lunch</h3>
+            {/* lunch main course dropdown */}
+            <MainCourseDropdown />
           </Row>
           <Row>
             <MealCarousel />
           </Row>
+
           {/* Dinner carousel */}
           <Row>
             <h3>Dinner</h3>
+            {/* dinner main course dropdown */}
+            <MainCourseDropdown />
           </Row>
           <Row>
             <MealCarousel />
           </Row>
+
           {/* Snack Carousel */}
           <Row>
             <h3>Snack</h3>
