@@ -1,6 +1,6 @@
 const router      = require('express').Router();
 const authRoutes  = require('./authRoutes');
-const todoRoutes =  require('./todoRoutes');
+const calcRoutes = require('./calcRoutes');
 
 const passportService = require('./../../services/passport');
 
@@ -13,6 +13,6 @@ router.route('/test')
   });
 
 router.use('/auth', authRoutes);
-router.use('/todo', todoRoutes);
+router.use('/calc', calcRoutes);
 
 module.exports = router;
