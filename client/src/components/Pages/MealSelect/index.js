@@ -12,18 +12,16 @@ import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
-
 class MealSelect extends Component {
-
   state = {
     // pull the initial meals to select
-    mealsArray : ['meal 1', 'meal 2']
-  }
+    mealsArray: ["meal 1", "meal 2"]
+  };
 
-  handleMealSelect = (value) => {
+  handleMealSelect = value => {
     console.log(value);
     this.getMeals(value);
-  }
+  };
 
   // handleMealSelect(value){
   //   console.log(value);
@@ -35,7 +33,6 @@ class MealSelect extends Component {
     // // mealdb queries
     // this.getRandomMeal();
     // this.getMeals('beef');
-
     // // nutritionix queries
     // this.simpleGet()
     // this.nutritionGet()
@@ -56,14 +53,12 @@ class MealSelect extends Component {
   //   }
   // }
 
-
-
-  getMeals = async (type) => {
+  getMeals = async type => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
       const data = await axios({
         url: URL,
-        method: "GET",
+        method: "GET"
       });
       console.log(data);
     } catch (e) {
@@ -74,14 +69,16 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-  getMealData = async (mealSelected) => {
+  getMealData = async mealSelected => {
     const URL = `/api/meal?meal=${mealSelected}`;
-    nutrientsPost = async mealSelected => {
+  };
+
+  nutrientsPost = async mealSelected => {
     const URL = "/api/meal";
     try {
       const data = await axios({
         url: URL,
-        method: "GET",
+        method: "GET"
         // data: {meal: mealSelected},
       });
       console.log(data);
@@ -116,10 +113,10 @@ class MealSelect extends Component {
           <Row>
             <h3>Lunch</h3>
             {/* lunch main course dropdown */}
-            <MainCourseDropdown onMealSelect={this.handleMealSelect}/>
+            <MainCourseDropdown onMealSelect={this.handleMealSelect} />
           </Row>
           <Row>
-            <MealCarousel/>
+            <MealCarousel />
           </Row>
 
           {/* Dinner carousel */}
