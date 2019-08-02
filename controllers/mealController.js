@@ -14,21 +14,21 @@ module.exports = {
   body
 
   */
- getMeals: async (req, res) => {
-   const URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
-  //  user will choose this but putting beef for test purposes
-   let type = req.query.type;
-   try {
-     const data = await axios({
-       url: URL + type,
-       method: "GET",
-     });
+  getMeals: async (req, res) => {
+    const URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
+    //  user will choose this but putting beef for test purposes
+    let type = req.query.type;
+    try {
+      const data = await axios({
+        url: URL + type,
+        method: "GET",
+      });
 
-    return res.json(data.data);
-   } catch (e) {
-     return res.json(e);
-   }
- },
+      return res.json(data.data);
+    } catch (e) {
+      return res.json(e);
+    }
+  },
 
   getMealData: async (req, res) => {
     const URL = "https://trackapi.nutritionix.com/v2/natural/nutrients";
@@ -58,30 +58,30 @@ module.exports = {
       return res.json(err);
     }
   },
-//   createTodo: async (req, res) => {
-//     const { description } = req.body;
-//     try {
-//       const newTodo = new db.Todo({description});
-//       await newTodo.save();
-//       console.log(newTodo);
-//       const user = await db.User.findById(req.user._id);
-//       user.todos.push(newTodo);
-//       await user.save();
-//       res.json({ success: true });
-//     } catch(e) {
-//       res.status(403).json(e);
-//     }
-//   }
+  //   createTodo: async (req, res) => {
+  //     const { description } = req.body;
+  //     try {
+  //       const newTodo = new db.Todo({description});
+  //       await newTodo.save();
+  //       console.log(newTodo);
+  //       const user = await db.User.findById(req.user._id);
+  //       user.todos.push(newTodo);
+  //       await user.save();
+  //       res.json({ success: true });
+  //     } catch(e) {
+  //       res.status(403).json(e);
+  //     }
+  //   }
 
 
-// **** extras to add ****
+  // **** extras to add ****
   // simpleGet = async () => {
   //   const allowCORS = 'https://cors-anywhere.herokuapp.com/'
   //   const URL = 'https://trackapi.nutritionix.com/v2/search/instant?query=grilled cheese'
 
   //   try{
   //     const data = await axios.get(allowCORS + URL, {headers : {          "x-app-id": nutritionixAppId,
-          // "x-app-key": nutitionixAppKey'}})
+  // "x-app-key": nutitionixAppKey'}})
   //     console.log(data)
   //     console.log(data.foods)
   //   }catch(err) {
@@ -89,13 +89,13 @@ module.exports = {
   //   }
   // }
 
-    // nutritionGet = async () => {
+  // nutritionGet = async () => {
   //   const allowCORS = 'https://cors-anywhere.herokuapp.com/'
   //   const URL = 'https://trackapi.nutritionix.com/v2/search/item?nix_item_id=5c66693b886783da3b0e8811'
 
   //   try{
   //     const data = await axios.get(allowCORS + URL, {headers : {          "x-app-id": nutritionixAppId,
-          // "x-app-key": nutitionixAppKey}})
+  // "x-app-key": nutitionixAppKey}})
   //     console.log(data)
   //   }catch(err) {
   //     console.error(err)
