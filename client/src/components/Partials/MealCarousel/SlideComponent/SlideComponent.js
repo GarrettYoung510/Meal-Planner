@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Axios from 'axios';
+import { Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 // const INCREMENT = 'INCREMENT';
@@ -21,22 +23,29 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 //   }
 // }
 
-class SlideComponent extends React.Component {
+class SlideComponent extends Component {
   
-
   state = {
     count: 0,
+    src: "https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg"
   };
 
+  mealSelect = () => {
+    Axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then(response => {
+        this.setState ({
+          src: response.data.meals[0].strMealThumb
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
   
+  componentWillMount(){
+    this.mealSelect();
+  }
 
-
-  // constructor() {
-  //   super();
-
-  //   this.handleIncrement = this.handleIncrement.bind(this);
-  //   this.handleDecrement = this.handleDecrement.bind(this);
-  // }
 
   handleIncrement = () => {
     // this.props.setIncrement();
@@ -55,18 +64,29 @@ class SlideComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <p>
-            Count:
-            { this.state.count }
+      <div style={{
+        "display": "flex",
+        "flex-direction": "column", 
+        "align-items": "flex-start"
+      }}>
+         {/* <div
+           style={
+             {"background-image": `url("${this.state.src}")`, "height": "100%"}
+           }>
+           {this.props.children}
+         </div> */}
+        <Image src={this.state.src} style={{"position": "absolute", "z-index": -1}}/>
+        <div style={{"z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center"}}>
+          <p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
+            Meal Name
+          </p><p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
+            {"Count: " + this.state.count}
           </p>
           <p>
-            <button type="button" onClick={this.handleDecrement}>-1</button>
-            <button type="button" onClick={this.handleIncrement}>+1</button>
+            <button className={"btn btn-dark"} type="button" onClick={this.handleDecrement}>-1</button>
+            <button className={"btn btn-dark"} type="button" onClick={this.handleIncrement}>+1</button>
           </p>
         </div>
-        <div>{this.props.children}</div>
       </div>
     );
   }

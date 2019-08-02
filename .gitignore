@@ -1,9 +1,5 @@
 # dependencies
 node_modules
-<<<<<<< Updated upstream
-=======
-package-lock.json
->>>>>>> Stashed changes
 .env
 /.pnp
 .pnp.js
