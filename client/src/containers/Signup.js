@@ -148,7 +148,7 @@ class Signup extends Component {
   onSubmit = formValues => {
     // console.log(formValues);
     this.props.signup(formValues, () => {
-      this.props.history.push("/profile/:id");
+      this.props.history.push("/profile");
     });
   };
 
