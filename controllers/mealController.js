@@ -2,8 +2,6 @@
 const { nutritionixAppId, nutitionixAppKey } = require('../config')
 const axios = require('axios');
 
-
-let mealSelected = ''
 module.exports = {
   /*
   GET 
@@ -16,27 +14,25 @@ module.exports = {
   body
 
   */
- mealChoose: async (req, res) => {
+ getMeals: async (req, res) => {
    const URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
-  //  user will choose this
-   let type = 'beef';
+  //  user will choose this but putting beef for test purposes
+   let type = req.query.type;
    try {
      const data = await axios({
        url: URL + type,
        method: "GET",
      });
 
-    mealSelected = data.data.meals[0].strMeal;
-    // console.log(mealSelected)
-
+    return res.json(data.data);
    } catch (e) {
      return res.json(e);
    }
  },
 
-  getMeals: async (req, res) => {
+  getMealData: async (req, res) => {
     const URL = "https://trackapi.nutritionix.com/v2/natural/nutrients";
-    // mealSelected = req.body.meal;
+    mealSelected = req.query.meal;
     console.log(mealSelected)
     try {
       const data = await axios({
@@ -78,7 +74,7 @@ module.exports = {
 //   }
 
 
-// extras to add 
+// **** extras to add ****
   // simpleGet = async () => {
   //   const allowCORS = 'https://cors-anywhere.herokuapp.com/'
   //   const URL = 'https://trackapi.nutritionix.com/v2/search/instant?query=grilled cheese'
