@@ -2,7 +2,11 @@
 const router      = require('express').Router();
 const authRoutes  = require('./authRoutes');
 const calcRoutes = require('./calcRoutes');
+<<<<<<< HEAD
+//const mealRoutes = require('./mealRoutes');
+=======
 const mealRoutes = require('./mealRoutes');
+>>>>>>> f3665468e1b4c12e732a822cf6df9643a7cb6bdc
 
 // const mealRoutes = require('./mealRoutes');
 
@@ -17,11 +21,15 @@ router.route("/test").get(authMiddleware.requireAuth, (req, res) => {
 
 router.use("/auth", authRoutes);
 
+<<<<<<< HEAD
+//router.use('/meal', mealRoutes);
+=======
 router.use('/auth', authRoutes);
 
 // router.use('/todo', todoRoutes);
 router.use('/meal', mealRoutes);
 
+>>>>>>> f3665468e1b4c12e732a822cf6df9643a7cb6bdc
 router.use("/calc", calcRoutes);
 
 module.exports = router;
