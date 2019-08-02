@@ -1,13 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Link } from "react-router-dom";
-import Container from './../Container/Container'
+import React from "react";
+import Container from "./../Container/Container";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Container>
-        <a className="navbar-brand" Link to={"/"}>
-          Meal Plan
+        <a className="navbar-brand">
+          <Link to="/">Meal Plan</Link>
         </a>
 
         <button
@@ -23,20 +23,19 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" Link to={"/"}>
-              Home <span className="sr-only">(current)</span>
+            <a className="nav-item nav-link">
+              <Link to="/">Home </Link>
+              <span className="sr-only">(current)</span>
             </a>
-            <a className="nav-item nav-link" Link to={"/"}>
-              Features
-            </a>
-            <a className="nav-item nav-link" Link to={"/"}>
-              Pricing
+            <a className="nav-item nav-link">
+              <Link to="/">Features</Link>
             </a>
             <a
               className="nav-item nav-link disabled"
               tabindex="-1"
               aria-disabled="true"
-              Link to={"/"}
+              Link
+              to={"/"}
             >
               Disabled
             </a>
