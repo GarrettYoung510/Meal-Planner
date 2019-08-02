@@ -1,91 +1,119 @@
-import React from 'react';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import MealSelect from '../../Pages/MealSelect';
+import React, { Component } from 'react';
 import Axios from 'axios';
+import {
+  ButtonBack,
+  ButtonNext,
+  CarouselProvider,
+  Slide,
+  Slider,
+  Image
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import Row from './../Row/Row';
+import Column from './../Column/Column';
+import SlideComponent from './SlideComponent/SlideComponent';
+// import s from './style.scss';
  
-class MealCarousel extends React.Component {
+class MealCarousel extends Component {
   
-  mealSelect = (props) =>{
+  state={
+    image1src: "https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg",
+    count: 0
+  }
+
+  mealSelect = () => {
     Axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-      .then(function(response) {
-        return <image src={response.meals[0].strMealThumb}></image>
+      .then(response => {
+        this.setState ({
+          image1src: response.data.meals[0].strMealThumb
+        })
       })
-      .catch(function(error){
+      .catch(error => {
         console.log(error)
       })
   }
   
+  componentWillMount(){
+    this.mealSelect();
+  }
+
   render() {
+    console.log(this.state.image1src)
     return (
-      <CarouselProvider
-        naturalSlideWidth={50}
-        naturalSlideHeight={50}
-        totalSlides={10}
-
-      >
-        <Slider
-          className="border border-danger rounded"
+      <Row>
+        <Column
+          small={12}
         >
-          <Slide 
-            index={0}
+          <CarouselProvider
+            visibleSlides={3}
+            totalSlides={6}
+            step={1}
+            naturalSlideWidth={250}
+            naturalSlideHeight={250}
           >
-            1 {this.props.mealSelect}
-
-          </Slide>
-          <Slide 
-            index={1}
-          >
-            2{this.props.mealSelect}
-            </Slide>
-          <Slide 
-            index={2}
-          >
-            3{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={3}
-          >
-            4{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={4}
-          >
-            5{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={5}
-          >
-            6{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={6}
-          >
-            7{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={7}
-          >
-            8{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={8}
-          >
-            9{this.props.mealSelect}
-          </Slide>
-          <Slide 
-            index={9}
-          >
-            10{this.props.mealSelect}
-          </Slide>
-        </Slider>
-        <ButtonBack
-          className="btn btn-dark"
-        >Back</ButtonBack>
-        <ButtonNext
-          className="btn btn-dark"
-        >Next</ButtonNext>
-      </CarouselProvider>
+              <Slider
+                className={"border border-danger rounded "}
+              >
+                <Slide
+                  index={0}
+                >
+                  <SlideComponent >
+                  <Image
+                    src={this.state.image1src}
+                  />
+                  </SlideComponent>
+                </Slide>
+                <Slide 
+                  index={1}
+                >
+                  <SlideComponent >
+                  <Image
+                    src={this.state.image1src}
+                  />
+                  </SlideComponent>
+                </Slide>
+                <Slide 
+                  index={2}
+                >
+                  <Image 
+                    src={this.state.image1src}
+                  />
+                </Slide>
+                <Slide 
+                  index={3}
+                >
+                  <Image 
+                    src={this.state.image1src}
+                  />
+                </Slide>
+                <Slide 
+                  index={4}
+                >
+                  <Image 
+                    src={this.state.image1src}
+                  />
+                </Slide>
+                <Slide 
+                  index={5}
+                >
+                  <Image 
+                    src={this.state.image1src}
+                  />
+                </Slide>
+              </Slider>
+              <ButtonBack
+                className="btn btn-dark"
+              >
+                Back
+              </ButtonBack>
+              <ButtonNext
+                className="btn btn-dark"
+              >
+                Next
+              </ButtonNext>
+          </CarouselProvider>
+        </Column>
+      </Row>
     );
   }
 }

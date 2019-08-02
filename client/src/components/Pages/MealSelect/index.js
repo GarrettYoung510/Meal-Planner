@@ -98,8 +98,6 @@ class MealSelect extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
-
         <Container>
           <Row>
             <h1>Meal Select Page</h1>
