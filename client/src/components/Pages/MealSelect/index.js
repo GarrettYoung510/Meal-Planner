@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
+import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
 import axios from "axios";
 // import config from '../../../../../config.js';
+import Signin from "../../../containers/Signin";
+import Signup from "../../../containers/Signup";
+import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
@@ -52,30 +56,17 @@ class MealSelect extends Component {
   getMeals = async type => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
-<<<<<<< HEAD
-      const data = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/random.php"
-      );
-      console.log(data);
-      console.log(data.data.meals[0]);
-      console.log(data.data.meals[0].strMeal);
-      // picture of thing pulled
-      console.log(data.data.meals[0].strMealThumb);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  getMealOfType = async () => {
-    const URL = "/api/meal/choose";
-    try {
-=======
->>>>>>> a531660f2148ff87bcb4b027e532644bb07fc223
       const data = await axios({
         url: URL,
         method: "GET"
       });
-      console.log(data);
+      console.log("this is the full object: " + data);
+      // array of meals under that category
+      console.log("this is the meals" + data.data.meals);
+      // code for pulling picture from api
+      console.log("this is the first meals picture link" + data.data.meals[0].strMealThumb);
+      // code for pulling meal name will need this to run through nutrients api
+      console.log("this is first meals name" + data.data.meals[0].strMeal);
     } catch (e) {
       console.error(e);
     }
