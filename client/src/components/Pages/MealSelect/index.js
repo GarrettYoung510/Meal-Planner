@@ -42,27 +42,10 @@ class MealSelect extends Component {
   getMealOfType = async () => {
     const URL = '/api/meal/choose';
     try {
-<<<<<<< HEAD
-      // types/categories to query
-      // 'breakfast', 'dessert'
-
-      // lunch and dinner will have a dropdown due to categories available including
-      // 'beef', 'chicken', 'goat', 'lamb', 'pasta', 'pork', 'seafood', 'vegan', 'vegetarian'
-
-      // 'side', 'starter' - this seems like the closest to a snack category but lists appetizers
-      // 'miscellaneous' - sends out random do not use this category
-
-      // we will pull type from the dropdown
-      let type = "starter";
-      const data = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + type
-      );
-=======
       const data = await axios({
         url: URL,
         method: "GET",
       });
->>>>>>> 981b233ef2ebd0bc265200c716dec7c1eeb13f5c
       console.log(data);
     } catch (e) {
       console.error(e);
@@ -72,13 +55,7 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-<<<<<<< HEAD
-
-  //
-  nutrientsPost = async mealSelected => {
-=======
   nutrientsPost = async (mealSelected) => {
->>>>>>> 981b233ef2ebd0bc265200c716dec7c1eeb13f5c
     const URL = "/api/meal";
 
     try {
