@@ -69,12 +69,6 @@ class SlideComponent extends Component {
         "flex-direction": "column", 
         "align-items": "flex-start"
       }}>
-         {/* <div
-           style={
-             {"background-image": `url("${this.state.src}")`, "height": "100%"}
-           }>
-           {this.props.children}
-         </div> */}
         <Image src={this.state.src} style={{"position": "absolute", "z-index": -1}}/>
         <div style={{"z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center"}}>
           <p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
