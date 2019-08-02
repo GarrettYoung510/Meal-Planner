@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../Partials/Navbar/Navbar";
 import Container from "../../Partials/Container/Container";
 import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
@@ -8,17 +7,9 @@ import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 
 const Main = () => {
   return (
-    <div className="App">
       <Container>
-        <Navbar />
-      </Container>
-      <Container>
-        <Row>
-          <Jumbotron />
-        </Row>
-        <Row>
-          <MealCarousel />
-        </Row>
+        <Jumbotron />
+        <MealCarousel />
         <Row>
           <Column small={12} medium={4} large={3} offset-lg={1}>
             <h1>Benefit #1</h1>
@@ -36,7 +27,6 @@ const Main = () => {
           </Container>
         </Row>
       </Container>
-    </div>
   );
 };
 
