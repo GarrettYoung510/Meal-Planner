@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MainCourseDropdown = props => {
   return (
@@ -14,33 +15,33 @@ const MainCourseDropdown = props => {
         Select Main Course
       </button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a className="dropdown-item" href="#">
+        <Link className="dropdown-item" to="/">
           Beef
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Chicken
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Goat
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Lamb
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Pasta
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Pork
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Seafood
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Vegan
-        </a>
-        <a className="dropdown-item" href="#">
+        </Link>
+        <Link className="dropdown-item" to="/">
           Vegetarian
-        </a>
+        </Link>
       </div>
     </div>
   );
