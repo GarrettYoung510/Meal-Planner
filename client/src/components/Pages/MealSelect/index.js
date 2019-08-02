@@ -10,6 +10,8 @@ import Signup from "../../../containers/Signup";
 import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 import { type } from "os";
+import ShoppingLinks from "../../Partials/ShoppingLinks/index";
+
 
 class MealSelect extends Component {
 
@@ -55,6 +57,7 @@ class MealSelect extends Component {
   // }
 
 
+
   getMeals = async (type) => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
@@ -66,14 +69,15 @@ class MealSelect extends Component {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
   getMealData = async (mealSelected) => {
     const URL = `/api/meal?meal=${mealSelected}`;
-
+    nutrientsPost = async mealSelected => {
+    const URL = "/api/meal";
     try {
       const data = await axios({
         url: URL,
@@ -93,13 +97,9 @@ class MealSelect extends Component {
     }
   };
 
-
-
   render() {
     return (
       <div className="App">
-        <Navbar />
-
         <Container>
           <Row>
             <h1>Meal Select Page</h1>
@@ -144,6 +144,8 @@ class MealSelect extends Component {
               <h1>Link to shopping list generator goes here</h1>
             </Container>
           </Row>
+
+          <ShoppingLinks />
         </Container>
       </div>
     );

@@ -11,7 +11,7 @@ const MealCarousel = () => {
       <Row>
         {/* row 1 item 1 */}
         <Column>
-          <Card href={"/"} />
+          <Card href={"/"}>example of something</Card>
         </Column>
         {/* row 1 item 2 */}
         <Column>
