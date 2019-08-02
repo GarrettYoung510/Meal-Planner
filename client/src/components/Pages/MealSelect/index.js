@@ -52,7 +52,6 @@ class MealSelect extends Component {
   getMeals = async type => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
-<<<<<<< HEAD
       const data = await axios.get(
         "https://www.themealdb.com/api/json/v1/1/random.php"
       );
@@ -69,8 +68,6 @@ class MealSelect extends Component {
   getMealOfType = async () => {
     const URL = "/api/meal/choose";
     try {
-=======
->>>>>>> ad29c7ea0d40a1f2421bc5051a2fb9fc2df52873
       const data = await axios({
         url: URL,
         method: "GET"
@@ -84,12 +81,9 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-<<<<<<< HEAD
-=======
   getMealData = async mealSelected => {
     const URL = `/api/meal?meal=${mealSelected}`;
   };
->>>>>>> ad29c7ea0d40a1f2421bc5051a2fb9fc2df52873
 
   nutrientsPost = async mealSelected => {
     const URL = "/api/meal";
