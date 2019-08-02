@@ -9,76 +9,83 @@ import Signin from "../../../containers/Signin";
 import Signup from "../../../containers/Signup";
 import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
+import { type } from "os";
+import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
 class MealSelect extends Component {
+  state = {
+    // pull the initial meals to select
+    mealsArray: ["meal 1", "meal 2"]
+  };
+
+  handleMealSelect = value => {
+    console.log(value);
+    this.getMeals(value);
+  };
+
+  // handleMealSelect(value){
+  //   console.log(value);
+  //   // this.getMeals(value);
+  //   console.log(this)
+  // }
+
   componentDidMount() {
     // // mealdb queries
     // this.getRandomMeal();
-    this.getMealOfType();
-
+    // this.getMeals('beef');
     // // nutritionix queries
     // this.simpleGet()
     // this.nutritionGet()
-    this.nutrientsPost();
+    // this.getMealData("cup noodles");
   }
 
   // gets random meal from api can be our featured meal?
-  getRandomMeal = async () => {
+  // getRandomMeal = async () => {
+  //   try {
+  //     const data = await axios.get("https://www.themealdb.com/api/json/v1/1/random.php");
+  //     console.log(data);
+  //     console.log(data.data.meals[0]);
+  //     console.log(data.data.meals[0].strMeal);
+  //     // picture of thing pulled
+  //     console.log(data.data.meals[0].strMealThumb);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
+
+  getMeals = async type => {
+    const URL = `/api/meal/choose?type=${type}`;
     try {
-      const data = await axios.get("https://www.themealdb.com/api/json/v1/1/random.php");
-      console.log(data);
-      console.log(data.data.meals[0]);
-      console.log(data.data.meals[0].strMeal);
-      // picture of thing pulled
-      console.log(data.data.meals[0].strMealThumb);
+      const data = await axios({
+        url: URL,
+        method: "GET"
+      });
+      console.log("this is the full object: " + data);
+      // array of meals under that category
+      console.log("this is the meals" + data.data.meals);
+      // code for pulling picture from api
+      console.log("this is the first meals picture link" + data.data.meals[0].strMealThumb);
+      // code for pulling meal name will need this to run through nutrients api
+      console.log("this is first meals name" + data.data.meals[0].strMeal);
     } catch (e) {
       console.error(e);
     }
-  }
-
-  getMealOfType = async () => {
-    try {
-      // types/categories to query
-      // 'breakfast', 'dessert'
-
-      // lunch and dinner will have a dropdown due to categories available including
-      // 'beef', 'chicken', 'goat', 'lamb', 'pasta', 'pork', 'seafood', 'vegan', 'vegetarian' 
-
-      // 'side', 'starter' - this seems like the closest to a snack category but lists appetizers 
-      // 'miscellaneous' - sends out random do not use this category
-
-      // we will pull type from the dropdown 
-      let type = 'starter';
-      const data = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + type);
-      console.log(data);
-      // // pulls first meal generated
-      // console.log(data.data.meals[0]);
-      // // name of the meal
-      console.log(data.data.meals[0].strMeal);
-      let mealSelected = data.data.meals[0].strMeal;
-      // this will actually be whichever the user clicks in the carousel
-      this.nutrientsPost(mealSelected);
-      // // picture of thing pulled
-      // console.log(data.data.meals[0].strMealThumb);
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  };
 
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
+  getMealData = async mealSelected => {
+    const URL = `/api/meal?meal=${mealSelected}`;
+  };
 
-
-  // 
-  nutrientsPost = async (mealSelected) => {
+  nutrientsPost = async mealSelected => {
     const URL = "/api/meal";
-
     try {
       const data = await axios({
         url: URL,
-        method: "POST",
-        data: {meal: mealSelected},
+        method: "GET"
+        // data: {meal: mealSelected},
       });
       console.log(data);
       // add total calories per ingredients found
@@ -92,8 +99,6 @@ class MealSelect extends Component {
       console.error(err);
     }
   };
-
-
 
   render() {
     return (
@@ -114,7 +119,7 @@ class MealSelect extends Component {
           <Row>
             <h3>Lunch</h3>
             {/* lunch main course dropdown */}
-            <MainCourseDropdown />
+            <MainCourseDropdown onMealSelect={this.handleMealSelect} />
           </Row>
           <Row>
             <MealCarousel />
@@ -142,6 +147,8 @@ class MealSelect extends Component {
               <h1>Link to shopping list generator goes here</h1>
             </Container>
           </Row>
+
+          <ShoppingLinks />
         </Container>
       </div>
     );
