@@ -52,6 +52,25 @@ class MealSelect extends Component {
   getMeals = async type => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
+<<<<<<< HEAD
+      const data = await axios.get(
+        "https://www.themealdb.com/api/json/v1/1/random.php"
+      );
+      console.log(data);
+      console.log(data.data.meals[0]);
+      console.log(data.data.meals[0].strMeal);
+      // picture of thing pulled
+      console.log(data.data.meals[0].strMealThumb);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  getMealOfType = async () => {
+    const URL = "/api/meal/choose";
+    try {
+=======
+>>>>>>> a531660f2148ff87bcb4b027e532644bb07fc223
       const data = await axios({
         url: URL,
         method: "GET"
