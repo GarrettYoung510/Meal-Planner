@@ -148,7 +148,7 @@ class Signup extends Component {
   onSubmit = formValues => {
     // console.log(formValues);
     this.props.signup(formValues, () => {
-      this.props.history.push("/profile/:id");
+      this.props.history.push("/profile");
     });
   };
 
@@ -156,7 +156,6 @@ class Signup extends Component {
     // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
-      <>
       <Container>
         <br/>
         <br/>
@@ -324,13 +323,11 @@ class Signup extends Component {
           <br/>
           <h5>Signup submits your information anonymously for custom results</h5>
           <br/>
-          <button type="button" className="btn btn-lg btn-success">Signup</button>
+          <button type="submit" className="btn btn-lg btn-outline-warning">Signup</button>
           <br/>
           <br/>
         </form>
       </Container>
-      <Footer/>
-      </>
     );
   }
 }
