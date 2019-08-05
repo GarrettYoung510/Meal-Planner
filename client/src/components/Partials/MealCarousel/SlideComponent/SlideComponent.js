@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Image } from 'pure-react-carousel';
+import {
+  ButtonBack,
+  ButtonNext,
+  CarouselProvider,
+  Slide,
+  Slider,
+  Image
+} from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import BreakfastMealSelect from './BreakfastMealSelect';
 import EntreMealSelect from './EntreMealSelect';
@@ -15,12 +22,12 @@ class SlideComponent extends Component {
     //https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg
   };
 
-  mealSelect = props => {
-    if(props === "breakfast") {
+  mealSelect = () => {
+    // if(props === "breakfast") {
       this.setState({
         meal: (BreakfastMealSelect.state.breakfast)
       })
-    }
+    // }
     // if(props === "entre") {
     //   EntreMealSelect
     // }
@@ -50,15 +57,16 @@ class SlideComponent extends Component {
   }
 
   render() {
-    return (
-      <div style={{
-        "display": "flex",
-        "flex-direction": "column", 
-        "align-items": "flex-start"
-      }}>
-        {this.state.meal.map(meal => {
-          return(
-            <>
+    return(
+      this.state.meal.map(meal => {
+        console.log(meal)
+        return (
+          <Slide>
+            <div style={{
+              "display": "flex",
+              "flex-direction": "column", 
+              "align-items": "flex-start"
+            }}>
               <Image src={meal.strMealThumb} style={{"position": "absolute", "z-index": -1}}/>
               <div style={{"z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center"}}>
                 <p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
@@ -72,11 +80,11 @@ class SlideComponent extends Component {
                   <button className={"btn btn-dark"} type="button" onClick={this.handleIncrement}>+1</button>
                 </p>
               </div>
-            </>
-          )
-        })}
-      </div>
-    );
+            </div>
+          </Slide>
+        );
+      })
+    )
   }
 }
 

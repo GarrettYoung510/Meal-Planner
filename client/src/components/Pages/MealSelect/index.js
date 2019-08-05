@@ -125,9 +125,9 @@ class MealSelect extends Component {
 
           {/* Snack Carousel */}
           <Row>
-            <h3>Snack</h3>
+            <h3>Side</h3>
           </Row>
-          <MealCarousel meal="snack" />
+          <MealCarousel meal="side" />
           <Row>
             <Container>
               <h1>Link to shopping list generator goes here</h1>

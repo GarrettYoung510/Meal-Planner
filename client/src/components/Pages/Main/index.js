@@ -9,7 +9,12 @@ const Main = () => {
   return (
       <Container>
         <Jumbotron />
-        <MealCarousel />
+        <Row>
+          <Column small={12}>
+            <h1>Featured Meals</h1>
+          </Column>
+        </Row>
+        <MealCarousel meal="featured"/>
         <Row>
           <Column small={12} medium={4}>
             <h1>Benefit #1</h1>
