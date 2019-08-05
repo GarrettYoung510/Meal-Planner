@@ -35,20 +35,11 @@ class MealCarousel extends Component {
           <Slider
             className={"border border-danger rounded " + s.slider}
           >
-            {/* <SlideComponent /> */}
-            {/* {
-              SlideComponent.state.meal.map(each => {
-                return (
-                  <Slide
-                    index={each.idMeal}
-                  >
-                    <SlideComponent mealSelect={this.meal}/>
-                  </Slide>
-                )
-              })
-            } */}
 
-            <Slide
+            {/* Needs connection to Slide Component */}
+            <SlideComponent />
+
+            {/* <Slide
               index={0}
             >
               <SlideComponent mealSelect={this.meal}/>
@@ -77,7 +68,7 @@ class MealCarousel extends Component {
               index={5}
             >
               <SlideComponent mealSelect={this.meal}/>
-            </Slide>
+            </Slide> */}
           </Slider>
           <ButtonBack
             className={"btn btn-dark" + s.buttonBack}
