@@ -15,6 +15,9 @@ import s from './style.scss';
  
 class MealCarousel extends Component {
   
+  meal(props) {
+    return props;
+  }
 
   render() {
     return (
@@ -33,32 +36,32 @@ class MealCarousel extends Component {
             <Slide
               index={0}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
             <Slide 
               index={1}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
             <Slide 
               index={2}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
             <Slide 
               index={3}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
             <Slide 
               index={4}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
             <Slide 
               index={5}
             >
-              <SlideComponent />
+              <SlideComponent mealSelect={meal()}/>
             </Slide>
           </Slider>
           <ButtonBack
