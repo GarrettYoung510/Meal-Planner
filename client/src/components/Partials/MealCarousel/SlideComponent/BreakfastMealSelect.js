@@ -12,7 +12,7 @@ class BreakfastMealSelect extends Component {
         Axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=breakfast")
             .then(response => {
                 this.setState({
-                    breakfast = response.meals
+                    breakfast: response.meals
                 })
             })
             .catch(error => {

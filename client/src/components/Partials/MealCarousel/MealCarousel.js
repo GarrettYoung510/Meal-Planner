@@ -14,12 +14,14 @@ import SlideComponent from './SlideComponent/SlideComponent';
 import s from './style.scss';
  
 class MealCarousel extends Component {
+ 
   
-  meal(props) {
-    return props;
-  }
-
+  // meal = (placeholder) => {
+    //   return placeholder;
+    // }
+    
   render() {
+    console.log(SlideComponent)
     return (
       <CarouselProvider
         visibleSlides={3}
@@ -33,35 +35,48 @@ class MealCarousel extends Component {
           <Slider
             className={"border border-danger rounded " + s.slider}
           >
+            {/* <SlideComponent /> */}
+            {/* {
+              SlideComponent.state.meal.map(each => {
+                return (
+                  <Slide
+                    index={each.idMeal}
+                  >
+                    <SlideComponent mealSelect={this.meal}/>
+                  </Slide>
+                )
+              })
+            } */}
+
             <Slide
               index={0}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
             <Slide 
               index={1}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
             <Slide 
               index={2}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
             <Slide 
               index={3}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
             <Slide 
               index={4}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
             <Slide 
               index={5}
             >
-              <SlideComponent mealSelect={meal()}/>
+              <SlideComponent mealSelect={this.meal}/>
             </Slide>
           </Slider>
           <ButtonBack

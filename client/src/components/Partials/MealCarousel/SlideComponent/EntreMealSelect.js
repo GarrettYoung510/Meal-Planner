@@ -12,9 +12,9 @@ class EntreMealSelect extends Component {
     mealSelect = () => {
         let select = MainCourseDropDown.state.choice;
         Axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + select)
-            .then((res) => {
+            .then(response => {
                 this.setState({
-                    entre = res
+                    entre: response.meals
                 })
             })
             .catch(error => {
