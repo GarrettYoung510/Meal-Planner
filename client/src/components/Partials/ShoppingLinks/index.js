@@ -10,26 +10,44 @@ const ShoppingLinks = props => {
       <Row>
         {/* link 1 */}
         <Column>
+          {/* Amazon Fresh */}
           <Card>
-            <a href={props.href} class="btn btn-info" role="button">
-              Amazon(not linked)
-            </a>
+            <button
+              type="submit"
+              // href={props.href}
+              href="https://www.amazon.com/AmazonFresh/b?ie=UTF8&node=10329849011"
+              class="btn btn-warning"
+              role="button"
+            >
+              Amazon Fresh (I DON'T WORK)
+            </button>
           </Card>
         </Column>
         {/* link 2 */}
         <Column>
           <Card>
-            <a href={props.href} class="btn btn-info" role="button">
-              costco(not linked)
-            </a>
+            <button
+              type="submit"
+              // href={props.href}
+              onclick="https://sameday.costco.com/"
+              class="btn btn-warning"
+              role="button"
+            >
+              Costco Same Day (I DON'T WORK)
+            </button>
           </Card>
         </Column>
-        {/* link 3 */}
         <Column>
           <Card>
-            <a href={props.href} class="btn btn-info" role="button">
-              some food delivery company(not linked)
-            </a>
+            <button
+              type="submit"
+              // href={props.href}
+              onclick="location.href = 'https://shop.safeway.com/home.html?r=https%3A%2F%2Fwww.google.com%2F';"
+              class="btn btn-warning"
+              role="button"
+            >
+              Safeway Delivery (I DON'T WORK)
+            </button>
           </Card>
         </Column>
       </Row>

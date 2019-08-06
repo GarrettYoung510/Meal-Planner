@@ -7,7 +7,9 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Container>
         <a className="navbar-brand">
-          <Link to="/" className="text-warning">Meal Plan</Link>
+          <Link to="/" className="text-warning">
+            Meal Plan
+          </Link>
         </a>
 
         <button
@@ -24,19 +26,23 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-item nav-link">
-              <Link to="/" className="text-light">Home </Link>
+              <Link to="/" className="text-light">
+                Home{" "}
+              </Link>
               <span className="sr-only">(current)</span>
             </a>
             <a className="nav-item nav-link">
-              <Link to="/" className="text-light">Features</Link>
+              <Link to="/" className="text-light">
+                Features
+              </Link>
             </a>
             <a
               className="nav-item nav-link disabled"
               tabindex="-1"
               aria-disabled="true"
             >
-              <Link to="/" className="text-secondary">
-              Disabled
+              <Link to="../" className="text-secondary">
+                Profile
               </Link>
             </a>
           </div>
