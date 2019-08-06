@@ -56,7 +56,7 @@ class FeaturedMealSelect extends Component {
               calories += res.data.foods[i].nf_calories;
             }
           }
-          meal.calories = calories;
+          meal.calories = Math.floor(calories);
 
           this.setState({ meals: [...this.state.meals, meal] });
         });
