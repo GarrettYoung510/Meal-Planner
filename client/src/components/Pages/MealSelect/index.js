@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
-import Navbar from "../../Partials/Navbar/Navbar";
+// import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
 import axios from "axios";
 // import config from '../../../../../config.js';
-import Signin from "../../../containers/Signin";
-import Signup from "../../../containers/Signup";
-import Column from "../../Partials/Column/Column";
+// import Signin from "../../../containers/Signin";
+// import Signup from "../../../containers/Signup";
+// import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
-import { type } from "os";
+// import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
 class MealSelect extends Component {
@@ -64,7 +64,9 @@ class MealSelect extends Component {
       // array of meals under that category
       console.log("this is the meals" + data.data.meals);
       // code for pulling picture from api
-      console.log("this is the first meals picture link" + data.data.meals[0].strMealThumb);
+      console.log(
+        "this is the first meals picture link" + data.data.meals[0].strMealThumb
+      );
       // code for pulling meal name will need this to run through nutrients api
       console.log("this is first meals name" + data.data.meals[0].strMeal);
     } catch (e) {
@@ -75,9 +77,10 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-  getMealData = async mealSelected => {
-    const URL = `/api/meal?meal=${mealSelected}`;
-  };
+  
+  // getMealData = async mealSelected => {
+  //   const URL = `/api/meal?meal=${mealSelected}`;
+  // };
 
   nutrientsPost = async mealSelected => {
     const URL = "/api/meal";

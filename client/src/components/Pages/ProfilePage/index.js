@@ -1,37 +1,105 @@
 import React, { Component } from "react";
+// import { reduxForm, Field } from 'redux-form';
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { fetchCalc } from "../../../actions";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
-import Navbar from "../../Partials/Navbar/Navbar";
+// import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
+import Column from "../../Partials/Column/Column";
+import requireAuth from "./../../../hoc/requireAuth";
+import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
+import Card from "../../Partials/Card/Card";
+import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
 class ProfilePage extends Component {
+  componentDidMount() {
+    this.props.fetchCalc();
+    console.log("this is inside profilepage", this.props.user);
+  }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       <h1>{this.props.user.email}</h1>
+  //     </div>
+  //   );
+  // };
+
+
   render() {
     return (
       <div className="App">
-        <Navbar />
-        <Row>
-          <h1>"HEADLINE" title of profile page</h1>
-        </Row>
-        {/* authentication container */}
         <Container>
           <Row>
-            <h1>INSERT PROFILE INFO HERE</h1>
+            <Column>
+              <h1 class="text-center" class="text-warning">
+                Your Profile this is a change
+              </h1>
+            </Column>
           </Row>
+        </Container>
+
+        {/* authentication container */}
+        <Container class="bg-dark">
+          <Card>
+            <Row>
+              {/* column 1 (user body info) */}
+              <Column small={12} medium={6} large={6} offset-lg={1}>
+                {/* <h4>User Info</h4> */}
+                <h5>Name: {this.props.user.first_name} {this.props.user.last_name}</h5>
+                <h5>Email: {this.props.user.email}</h5>
+                <h5>Height: {this.props.user.height}</h5>
+                <h5>Weight: {this.props.user.weight}</h5>
+                <h5>Gender: {this.props.user.gender}</h5>
+                <h5>Activity Level: {this.props.user.activity_level}</h5>
+              </Column>
+
+              <Column small={12} medium={6} large={6} offset-lg={1}>
+                <a float-right>
+                  <h5 class="text-warning">Nutritional Info</h5>
+                  <h5>Daily Calories: {this.props.user.calories}</h5>
+                  <h5>Macros</h5>
+                  <h6>- Protein: {this.props.user.protein} grams</h6>
+                  <h6>- Fat: {this.props.user.fat} grams</h6>
+                  <h6>- Carbs: {this.props.user.carb} grams</h6>
+                </a>
+              </Column>
+            </Row>
+          </Card>
         </Container>
         {/* meals container */}
         <Container>
-          <Row>
-            <h2>Selected Meals/ your meals</h2>
-          </Row>
           <Container>
-            <MealCarousel />
+            <Card>
+              <Row>
+                <h2 class="text-warning">Selected Meals</h2>
+              </Row>
+              <MealCarousel />
+              <h9>carousel made with love by ryan</h9>
+            </Card>
           </Container>
         </Container>
         {/* grocery store/ delivery/ online shopping links */}
-        <Container>links go here</Container>
+        <br />
+        <Container>
+          <h1 class="text-warning">Start Shopping Right Away!</h1>
+          <ShoppingLinks />
+        </Container>
       </div>
     );
   }
 }
 
-export default ProfilePage;
+function mapStateToProps(state) {
+  console.log("mapState", state)
+  // return { user: state.user }
+  return state.user
+}
+
+const formedComponent = compose(
+  connect(mapStateToProps, { fetchCalc }),
+)(ProfilePage);
+
+export default requireAuth(formedComponent);

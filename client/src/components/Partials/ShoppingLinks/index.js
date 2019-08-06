@@ -11,6 +11,7 @@ const ShoppingLinks = props => {
       <Row>
         {/* link 1 */}
         <Column>
+          {/* Amazon Fresh */}
           <Card>
             <Link to={props.href} className="btn btn-info" role="button">
               Amazon(not linked)
@@ -25,7 +26,6 @@ const ShoppingLinks = props => {
             </Link>
           </Card>
         </Column>
-        {/* link 3 */}
         <Column>
           <Card>
             <Link to={props.href} className="btn btn-info" role="button">
