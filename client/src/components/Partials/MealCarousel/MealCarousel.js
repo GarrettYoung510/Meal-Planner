@@ -5,13 +5,14 @@ import {
   CarouselProvider,
   Slide,
   Slider,
-  Image
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import Row from "./../Row/Row";
-import Column from "./../Column/Column";
-import SlideComponent from "./SlideComponent/SlideComponent";
-import s from "./style.scss";
+  // Image
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+// import Row from './../Row/Row';
+// import Column from './../Column/Column';
+import SlideComponent from './SlideComponent/SlideComponent';
+import s from './style.scss';
+
 
 class MealCarousel extends Component {
   render() {

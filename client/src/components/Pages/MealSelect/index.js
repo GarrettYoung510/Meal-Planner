@@ -77,9 +77,10 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-  getMealData = async mealSelected => {
-    const URL = `/api/meal?meal=${mealSelected}`;
-  };
+  
+  // getMealData = async mealSelected => {
+  //   const URL = `/api/meal?meal=${mealSelected}`;
+  // };
 
   nutrientsPost = async mealSelected => {
     const URL = "/api/meal";

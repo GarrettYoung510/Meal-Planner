@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import {
   FETCH_CALC,
   CALC_ERROR,
@@ -12,6 +13,11 @@ import {
   MEALS_ERROR
 } from "./types";
 import axios from "axios";
+=======
+import { INCREMENT_COUNTER, DECREMENT_COUNTER, AUTH_USER, AUTH_ERROR, ADD_TODO, TODO_ERROR, FETCH_CALC,CALC_ERROR, FETCH_MEALS, MEALS_ERROR } from "./types";
+import axios from 'axios';
+
+>>>>>>> Stashed changes
 
 export const incrementCounter = () => {
   return {
@@ -55,15 +61,16 @@ export const signout = () => {
   };
 };
 
+
 export const fetchCalc = () => async dispatch => {
   try {
-    console.log(response.data.user);
-    const response = await axios.get("/api/calc", {
-      headers: { authorization: localStorage.getItem("token") }
+    const response = await axios.get('/api/calc', {
+      headers: { authorization: localStorage.getItem('token')}
     });
+    //console.log(response.data.user)
     dispatch({ type: FETCH_CALC, payload: response.data.user });
-  } catch (e) {
-    dispatch({ type: CALC_ERROR, payload: "Something bad happened" });
+  } catch(e) {
+    dispatch({ type: CALC_ERROR, payload: 'Something bad happened' });
   }
 };
 

@@ -19,23 +19,23 @@ class ProfilePage extends Component {
     this.props.fetchCalc();
   }
 
-  renderCalc() {
-    return this.props.user.map(user => {
-      return (
-        <div key={user._id}>
-          <p>{user._id}</p>
-          <p>{user.email}</p>
-          <p>{user.first_name}</p>
-          <p>{user.last_name}</p>
-          <p>{user.age}</p>
-          <p>{user.gender}</p>
-          <p>{user.weight}</p>
-          <p>{user.height}</p>
-          <p>{user.activity_level}</p>
-        </div>
-      );
-    });
-  }
+  // renderCalc() {
+  //   return this.props.user.map(user => {
+  //     return (
+  //       <div key={user._id}>
+  //         <p>{user._id}</p>
+  //         <p>{user.email}</p>
+  //         <p>{user.first_name}</p>
+  //         <p>{user.last_name}</p>
+  //         <p>{user.age}</p>
+  //         <p>{user.gender}</p>
+  //         <p>{user.weight}</p>
+  //         <p>{user.height}</p>
+  //         <p>{user.activity_level}</p>
+  //       </div>
+  //     );
+  //   });
+  // }
 
   render() {
     return (
@@ -101,15 +101,12 @@ class ProfilePage extends Component {
   }
 }
 
-function mapStateToProps({ user }) {
-  return { user };
+function mapStateToProps(state){
+  return { user: state.user }
 }
 
 const formedComponent = compose(
-  connect(
-    mapStateToProps,
-    { fetchCalc }
-  )
+  connect(mapStateToProps, { fetchCalc }),
 )(ProfilePage);
 
 export default requireAuth(formedComponent);
