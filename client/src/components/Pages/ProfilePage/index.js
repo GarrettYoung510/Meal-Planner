@@ -15,27 +15,17 @@ import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
 class ProfilePage extends Component {
   componentDidMount() {
-    console.log(this.props.user);
     this.props.fetchCalc();
+    console.log("this is inside profilepage", this.props.user);
   }
 
-  renderCalc() {
-    return this.props.user.map(user => {
-      return (
-        <div key={user._id}>
-          <p>{user._id}</p>
-          <p>{user.email}</p>
-          <p>{user.first_name}</p>
-          <p>{user.last_name}</p>
-          <p>{user.age}</p>
-          <p>{user.gender}</p>
-          <p>{user.weight}</p>
-          <p>{user.height}</p>
-          <p>{user.activity_level}</p>
-        </div>
-      );
-    });
-  }
+  // render() {
+  //   return (
+  //     <div>
+  //       <h1>{this.props.user.email}</h1>
+  //     </div>
+  //   );
+  // };
 
   render() {
     return (
@@ -57,22 +47,22 @@ class ProfilePage extends Component {
               {/* column 1 (user body info) */}
               <Column small={12} medium={6} large={6} offset-lg={1}>
                 {/* <h4>User Info</h4> */}
-                <h5>Name: Ronald</h5>
-                <h5>Email: ronald@ron.com</h5>
-                <h5>Height: 6'3"</h5>
-                <h5>Weight: 187</h5>
-                <h5>Gender: Male</h5>
-                <h5>Activity Level: Sedentary</h5>
+                <h5> Name: {this.props.user.last_name}</h5>
+                <h5>Email: {this.props.user.email}</h5>
+                <h5>Height: {this.props.user.height}</h5>
+                <h5>Weight: {this.props.user.weight}</h5>
+                <h5>Gender: {this.props.user.gender}</h5>
+                <h5>Activity Level: {this.props.user.activity_level}</h5>
               </Column>
 
               <Column small={12} medium={6} large={6} offset-lg={1}>
                 <a float-right>
                   <h5 class="text-warning">Nutritional Info</h5>
-                  <h5>Calories: 5634</h5>
+                  <h5>Daily Calories: {this.props.user.calories}</h5>
                   <h5>Macros</h5>
-                  <h6>- Protein: 1291 cal</h6>
-                  <h6>- Fat: 1987 cal</h6>
-                  <h6>- Carbs: 2356 cal</h6>
+                  <h6>- Protein: {this.props.user.protein} grams</h6>
+                  <h6>- Fat: {this.props.user.fat} grams</h6>
+                  <h6>- Carbs: {this.props.user.carb} grams</h6>
                 </a>
               </Column>
             </Row>
@@ -101,8 +91,10 @@ class ProfilePage extends Component {
   }
 }
 
-function mapStateToProps({ user }) {
-  return { user };
+function mapStateToProps(state) {
+  console.log("mapState", state);
+  // return { user: state.user }
+  return state.user;
 }
 
 const formedComponent = compose(
