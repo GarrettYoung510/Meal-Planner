@@ -25,7 +25,8 @@ class SlideComponent extends Component {
   mealSelect = () => {
     // if(props === "breakfast") {
       this.setState({
-        meal: (BreakfastMealSelect.state.breakfast)
+        meal: (BreakfastMealSelect.state.breakfast),
+        sidemeal: (SideMealSelect.state.side),
       })
     // }
     // if(props === "entre") {

@@ -19,8 +19,10 @@ import axios from 'axios';
 
 class MealCarousel extends Component {
   
+  // initial state
   state = {
     count: 0,
+    // arrays for each parameter
     featuredMeal: [],
     breakfastMeal: [],
     entreMeal: [],
@@ -28,6 +30,7 @@ class MealCarousel extends Component {
     //https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg
   };
 
+  // handle increment for the it
   handleIncrement = (item) => {
     
     item.count ? 

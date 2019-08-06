@@ -53,6 +53,7 @@ class MealSelect extends Component {
   //   }
   // }
 
+  // get meals hits this api call and gets the type
   getMeals = async type => {
     const URL = `/api/meal/choose?type=${type}`;
     try {
