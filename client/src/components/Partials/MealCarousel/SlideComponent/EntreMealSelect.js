@@ -10,15 +10,19 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import s from './../style.scss';
 import axios from 'axios';
+import MainCourseDropDown from './../../MainCourseDropDown'
 
 class EntreMealSelect extends Component {
 
     state = {
-        meals: []
+        meals: [],
+        entre: "chicken"
     };
-
+    componentDidMount(){
+        console.log("form entre meal")
+        this.props.entreState(this.setState)
+    }
     handleIncrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count += 1
@@ -27,7 +31,6 @@ class EntreMealSelect extends Component {
     }
 
     handleDecrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count -= 1
@@ -36,27 +39,35 @@ class EntreMealSelect extends Component {
     }
     
     mealDisplay = () => {
-        // Enter variable for dropdown selection
-        axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken")
+        const query = this.props.entre
+        axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + query)
             .then(entre => {
                 const meal = entre.data.meals
                 meal.forEach(item =>{
                     item.count = 0
+                    this.setState({ meals: [...this.state.meals, item] })
                 })
-                this.setState({ meals: [...this.state.meals, meal] })
             })
             .catch(error => {
                 console.log(error)
             }) 
     }
-    
+
+    handleEntreChange(newEntre) {
+
+        this.setState({ entre: this.props.entre })
+    }
+   
+    componentWillReceiveProps(prevState){
+        thi
+    }
+   
     componentWillMount() {
         this.mealDisplay()
-        console.log("hit")
+        this.handleEntreChange()
     }
 
     render() {
-
         return (
             <CarouselProvider
                 visibleSlides={3}
@@ -70,6 +81,8 @@ class EntreMealSelect extends Component {
                 <Slider
                     className="border border-danger rounded"
                 >
+                    {console.log(this.props.entre)}
+                    {console.log(this.state.entre)}
                     {this.state.meals.map((item, index) => {
                             return (
                                 <Slide>
