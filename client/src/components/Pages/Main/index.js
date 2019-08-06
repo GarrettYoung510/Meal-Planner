@@ -11,22 +11,21 @@ const Main = () => {
     <Container>
       <Jumbotron />
       <Container>
-        <h1 class="text-warning">Featured Meals</h1>
-        <MealCarousel />
-      </Container>
-      <Row>
-        <Column small={12} medium={4} large={3} offset-lg={1}>
-          <Card>
+        <Jumbotron />
+        <Row>
+          <Column small={12}>
+            <h1>Featured Meals</h1>
+          </Column>
+        </Row>
+        <MealCarousel mealSelect="featured"/>
+        <Row>
+          <Column small={12} medium={4}>
             <h1>Benefit #1</h1>
-          </Card>
-        </Column>
-        <Column small={12} medium={4} large={3} offset-lg={1}>
-          <Card>
+          </Column>
+          <Column small={12} medium={4}>
             <h1>Benefit #2</h1>
-          </Card>
-        </Column>
-        <Column small={12} medium={4} large={3}>
-          <Card>
+          </Column>
+          <Column small={12} medium={4}>
             <h1>Benefit #3</h1>
           </Card>
         </Column>

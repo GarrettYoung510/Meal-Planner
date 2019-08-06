@@ -77,9 +77,10 @@ class MealSelect extends Component {
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
   // when they click one of the options it runs it through nutritionix next option to pull nutrition info
-  getMealData = async mealSelected => {
-    const URL = `/api/meal?meal=${mealSelected}`;
-  };
+  
+  // getMealData = async mealSelected => {
+  //   const URL = `/api/meal?meal=${mealSelected}`;
+  // };
 
   nutrientsPost = async mealSelected => {
     const URL = "/api/meal";
@@ -116,34 +117,20 @@ class MealSelect extends Component {
           <Row>
             <h3>Breakfast</h3>
           </Row>
-          <MealCarousel />
-          {/* Lunch carousel */}
+          <MealCarousel mealSelect="breakfast" />
+          {/* Lunch & Dinner combined carousel */}
           <Row>
-            <h3>Lunch</h3>
+            <h3>Lunch & Dinner</h3>
             {/* lunch main course dropdown */}
             <MainCourseDropdown onMealSelect={this.handleMealSelect} />
           </Row>
-          <Row>
-            <MealCarousel />
-          </Row>
-
-          {/* Dinner carousel */}
-          <Row>
-            <h3>Dinner</h3>
-            {/* dinner main course dropdown */}
-            <MainCourseDropdown />
-          </Row>
-          <Row>
-            <MealCarousel />
-          </Row>
+          <MealCarousel mealSelect="entre" />
 
           {/* Snack Carousel */}
           <Row>
-            <h3>Snack</h3>
+            <h3>Side</h3>
           </Row>
-          <Row>
-            <MealCarousel />
-          </Row>
+          <MealCarousel mealSelect="side" />
           <Row>
             <Container>
               <h1>Link to shopping list generator goes here</h1>

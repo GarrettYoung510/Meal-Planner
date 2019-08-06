@@ -36,14 +36,11 @@ const Navbar = () => {
                 Features
               </Link>
             </a>
-            <a
-              className="nav-item nav-link disabled"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              <Link to="../" className="text-secondary">
-                Profile
-              </Link>
+            <a className="nav-item nav-link">
+              <Link to="/signin" className="text-light">Sign In</Link>
+            </a>
+            <a className="nav-item nav-link">
+              <Link to="/signup" className="text-light">Sign Up</Link>
             </a>
           </div>
         </div>
