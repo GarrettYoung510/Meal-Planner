@@ -4,29 +4,34 @@ import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
 import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
+import Card from "../../Partials/Card/Card";
 
 const Main = () => {
   return (
+    <Container>
+      <Jumbotron />
       <Container>
-        <Jumbotron />
+        <h1 class="text-warning">Featured Meals</h1>
         <MealCarousel />
-        <Row>
-          <Column small={12} medium={4} large={3} offset-lg={1}>
-            <h1>Benefit #1</h1>
-          </Column>
-          <Column small={12} medium={4} large={3} offset-lg={1}>
-            <h1>Benefit #2</h1>
-          </Column>
-          <Column small={12} medium={4} large={3}>
-            <h1>Benefit #3</h1>
-          </Column>
-        </Row>
-        <Row>
-          <Container>
-            <h1>Section for featured meals goes here</h1>
-          </Container>
-        </Row>
       </Container>
+      <Row>
+        <Column small={12} medium={4} large={3} offset-lg={1}>
+          <Card>
+            <h1>Benefit #1</h1>
+          </Card>
+        </Column>
+        <Column small={12} medium={4} large={3} offset-lg={1}>
+          <Card>
+            <h1>Benefit #2</h1>
+          </Card>
+        </Column>
+        <Column small={12} medium={4} large={3}>
+          <Card>
+            <h1>Benefit #3</h1>
+          </Card>
+        </Column>
+      </Row>
+    </Container>
   );
 };
 
