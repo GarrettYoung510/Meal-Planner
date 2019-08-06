@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import Column from "../Column/Column";
 import Container from "../Container/Container";
 import Row from "../Row/Row";
+import { Link } from 'react-router-dom';
 
 const ShoppingLinks = props => {
   return (
@@ -12,6 +13,7 @@ const ShoppingLinks = props => {
         <Column>
           {/* Amazon Fresh */}
           <Card>
+
             <button
               type="submit"
               // href={props.href}
@@ -26,6 +28,7 @@ const ShoppingLinks = props => {
         {/* link 2 */}
         <Column>
           <Card>
+
             <button
               type="submit"
               // href={props.href}
@@ -35,10 +38,12 @@ const ShoppingLinks = props => {
             >
               Costco Same Day (I DON'T WORK)
             </button>
+
           </Card>
         </Column>
         <Column>
           <Card>
+
             <button
               type="submit"
               // href={props.href}
@@ -48,6 +53,7 @@ const ShoppingLinks = props => {
             >
               Safeway Delivery (I DON'T WORK)
             </button>
+
           </Card>
         </Column>
       </Row>
