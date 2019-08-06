@@ -44,7 +44,7 @@ class ProfilePage extends Component {
           <Row>
             <Column>
               <h1 class="text-center" class="text-warning">
-                Your Profile
+                Your Profile this is a change
               </h1>
             </Column>
           </Row>
