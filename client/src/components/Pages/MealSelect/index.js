@@ -114,20 +114,20 @@ class MealSelect extends Component {
           <Row>
             <h3>Breakfast</h3>
           </Row>
-          <MealCarousel meal="breakfast" />
+          <MealCarousel mealSelect="breakfast" />
           {/* Lunch & Dinner combined carousel */}
           <Row>
             <h3>Lunch & Dinner</h3>
             {/* lunch main course dropdown */}
             <MainCourseDropdown onMealSelect={this.handleMealSelect} />
           </Row>
-          <MealCarousel meal="entre" />
+          <MealCarousel mealSelect="entre" />
 
           {/* Snack Carousel */}
           <Row>
             <h3>Side</h3>
           </Row>
-          <MealCarousel meal="side" />
+          <MealCarousel mealSelect="side" />
           <Row>
             <Container>
               <h1>Link to shopping list generator goes here</h1>

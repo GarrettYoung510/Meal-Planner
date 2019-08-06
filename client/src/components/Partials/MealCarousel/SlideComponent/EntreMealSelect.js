@@ -1,29 +1,114 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import {
+  ButtonBack,
+  ButtonNext,
+  CarouselProvider,
+  Slide,
+  Slider,
+  Image
+} from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import MainCourseDropDown from './../../MainCourseDropDown'
+import s from './../style.scss';
+import axios from 'axios';
 
 class EntreMealSelect extends Component {
 
-    mealSelect = () => {
-        let select = MainCourseDropDown.state.choice;
-        Axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + select)
-            .then(response => {
-                return response.meals
-            })
-            .catch(error => {
-            console.log(error)
-            })
+    state = {
+        meals: []
+    };
+
+    handleIncrement = (index) => {
+        // console.log(index)
+        this.setState(prevState => {
+            const newMeals = [...this.state.meals]
+            newMeals[index].count += 1
+            return { meals: newMeals}
+        })
     }
 
-    mealSelectDefault = () => {
-        Axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-            .then(response => {
-                return response.meals
+    handleDecrement = (index) => {
+        // console.log(index)
+        this.setState(prevState => {
+            const newMeals = [...this.state.meals]
+            newMeals[index].count -= 1
+            return { meals: newMeals}
+        })
+    }
+    
+    mealDisplay = () => {
+        // Enter variable for dropdown selection
+        axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken")
+            .then(entre => {
+                const meal = entre.data.meals
+                meal.forEach(item =>{
+                    item.count = 0
+                })
+                this.setState({ meals: [...this.state.meals, meal] })
             })
             .catch(error => {
-            console.log(error)
-            })
+                console.log(error)
+            }) 
+    }
+    
+    componentWillMount() {
+        this.mealDisplay()
+        console.log("hit")
+    }
+
+    render() {
+
+        return (
+            <CarouselProvider
+                visibleSlides={3}
+                totalSlides={this.state.meals.length}
+                step={1}
+                naturalSlideWidth={250}
+                naturalSlideHeight={250}
+                hasMasterSpinner
+            >
+                <div className={s.container}>
+                <Slider
+                    className="border border-danger rounded"
+                >
+                    {this.state.meals.map((item, index) => {
+                            return (
+                                <Slide>
+                                    <div style={{
+                                        "display": "flex",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start"
+                                    }}>
+                                        <Image src={item.strMealThumb} style={{ "position": "absolute", "z-index": -1 }} />
+                                        <div style={{ "z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center" }}>
+                                            <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
+                                                {item.strMeal}
+                                            </p>
+                                            <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
+                                                {"Count: " + item.count}
+                                            </p>
+                                            <p>
+                                                <button className="btn btn-dark" type="button" onClick={() => { this.handleDecrement(index) }}>-1</button>
+                                                <button className="btn btn-dark" type="button" onClick={() => { this.handleIncrement(index) }}>+1</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Slide>
+                            )
+                        })}
+                </Slider>
+                <ButtonBack
+                    className={"btn btn-dark" + s.buttonBack}
+                >
+                    Back
+                </ButtonBack>
+                <ButtonNext
+                    className={"btn btn-dark" + s.buttonNext}
+                >
+                    Next
+                </ButtonNext>
+                </div>
+            </CarouselProvider>
+        )
     }
 }
 

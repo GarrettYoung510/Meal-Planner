@@ -1,173 +1,57 @@
 import React, { Component } from 'react';
 import {
-  ButtonBack,
-  ButtonNext,
-  CarouselProvider,
-  Slide,
-  Slider,
-  Image
+    ButtonBack,
+    ButtonNext,
+    CarouselProvider,
+    Slide,
+    Slider,
+    Image
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import s from './../style.scss';
 import axios from 'axios';
 
 class FeaturedMealSelect extends Component {
-  
-  state = {
-    meal: "",
-    param: ""
-    //https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg
-  };
 
-  handleIncrement = (item) => {
-    
-    item.count ? 
-    item.count = item.count + 1 :
-    item.count = 1
+    state = {
+        meals: []
+    };
 
-    //Clone Meal
-    const newMeal = this.state.meal
-    //Change object in meal to increment count
-    // if()
-    //store meal back to state
-
-    // this.setState({
-    //     meal: meal.item
-    // })
-    
-    // this.state.item.count ?
-    //   this.setState(prevState => {
-        //     return { count: prevState.count + 1}
-        //   }) :
-        //   item.count = 1
+    handleIncrement = (index) => {
+        // console.log(index)
+        this.setState(prevState => {
+            const newMeals = [...this.state.meals]
+            newMeals[index].count += 1
+            return { meals: newMeals}
+        })
     }
 
-    handleDecrement = (item) => {
-        item.count ? 
-        item.count = item.count - 1 :
-        item.count = 0
-        // this.state.item.count ?
-        // this.setState(prevState => {
-        //   return { count: prevState.count - 1}
-        // }) :
-        // item.count = 0
+    handleDecrement = (index) => {
+        // console.log(index)
+        this.setState(prevState => {
+            const newMeals = [...this.state.meals]
+            newMeals[index].count -= 1
+            return { meals: newMeals}
+        })
     }
 
-    mealSelect = () => {
-        console.log("MS")
-        switch (this.state.param) {
-            case 'featured':
-                const randomArray = [];
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then((random) => {
-                        const one = random.data.meals
-                        one[0].count = 0
-                        randomArray.push(one[0])
-                        console.log("one")
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then((random) => {
-                        const two = random.data.meals
-                        two[0].count = 0
-                        randomArray.push(two[0])
-                        console.log("two")
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then((random) => {
-                        const three = random.data.meals
-                        three[0].count = 0
-                        randomArray.push(three[0])
-                        console.log("three")
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then((random) => {
-                        const four = random.data.meals
-                        four[0].count = 0
-                        randomArray.push(four[0])
-                        console.log("four")
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then((random) => {
-                        const five = random.data.meals
-                        five[0].count = 0
-                        randomArray.push(five[0])
-                        console.log("five")
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
-                    .then(random => {
-                        const six = random.data.meals
-                        six[0].count = 0
-                        randomArray.push(six[0])
-                        console.log("six")
-                        this.setState({
-                            meal: randomArray
-                        })
-                        this.carousel()
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
+    mealDisplay = () => {
+        const promises = []
+        for (let i = 0; i < 6; i++) {
+            const result = axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
+            promises.push(result)
         }
-    }
-
-    carousel = () => { 
-        let feat = this.state.meal
-        console.log(this.state)
-        console.log("feat")
-        console.log(feat)
-        console.log(feat.length)
-        feat.map(function(item) {
-            console.log("item")
-            console.log(item)
-            return (
-                <Slide>
-                    <div style={{
-                        "display": "flex",
-                        "flex-direction": "column", 
-                        "align-items": "flex-start"
-                    }}>
-                        <Image src={item.strMealThumb} style={{"position": "absolute", "z-index": -1}}/>
-                        <div style={{"z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center"}}>
-                            <p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
-                                {item.strMeal}
-                            </p>
-                            <p style={{"background": "rgba(235, 235, 235, 0.6)", "text-align": "center"}}>
-                                {"Count: " + item.count}
-                            </p>
-                            <p>
-                                <button className={"btn btn-dark"} type="button" onClick={this.handleDecrement()}>-1</button>
-                                <button className={"btn btn-dark"} type="button" onClick={this.handleIncrement()}>+1</button>
-                            </p>
-                        </div>
-                    </div>
-                </Slide>
-            )
+        Promise.all(promises).then((values) => {
+            values.forEach(random => {
+                const meal = random.data.meals[0]
+                meal.count = 0
+                this.setState({ meals: [...this.state.meals, meal] })
+            })
         })
     }
 
-    
     componentWillMount() {
-        console.log("CWM")
-        console.log(this.props.meal)
-        this.setState({
-            param: this.props.meal
-        })
-        console.log(this.state.param)
+        this.mealDisplay()
     }
 
     render() {
@@ -182,20 +66,46 @@ class FeaturedMealSelect extends Component {
                 hasMasterSpinner
             >
                 <div className={s.container}>
-                <Slider
-                    className="border border-danger rounded"
-                >
-                    {this.mealSelect()}
-                </Slider>
-                <ButtonBack
-                    className={"btn btn-dark" + s.buttonBack}
-                >
-                    Back
+                    <Slider
+                        className="border border-danger rounded"
+                    >
+
+                        {this.state.meals.map((item, index) => {
+                            return (
+                                <Slide>
+                                    <div style={{
+                                        "display": "flex",
+                                        "flex-direction": "column",
+                                        "align-items": "flex-start"
+                                    }}>
+                                        <Image src={item.strMealThumb} style={{ "position": "absolute", "z-index": -1 }} />
+                                        <div style={{ "z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center" }}>
+                                            <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
+                                                {item.strMeal}
+                                            </p>
+                                            <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
+                                                {"Count: " + item.count}
+                                            </p>
+                                            <p>
+                                                <button className="btn btn-dark" type="button" onClick={() => { this.handleDecrement(index) }}>-1</button>
+                                                <button className="btn btn-dark" type="button" onClick={() => { this.handleIncrement(index) }}>+1</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Slide>
+                            )
+                        })}
+
+                    </Slider>
+                    <ButtonBack
+                        className={"btn btn-dark" + s.buttonBack}
+                    >
+                        Back
                 </ButtonBack>
-                <ButtonNext
-                    className={"btn btn-dark" + s.buttonNext}
-                >
-                    Next
+                    <ButtonNext
+                        className={"btn btn-dark" + s.buttonNext}
+                    >
+                        Next
                 </ButtonNext>
                 </div>
             </CarouselProvider>
