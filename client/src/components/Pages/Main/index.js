@@ -9,15 +9,20 @@ const Main = () => {
   return (
       <Container>
         <Jumbotron />
-        <MealCarousel />
         <Row>
-          <Column small={12} medium={4} large={3} offset-lg={1}>
+          <Column small={12}>
+            <h1>Featured Meals</h1>
+          </Column>
+        </Row>
+        <MealCarousel mealSelect="featured"/>
+        <Row>
+          <Column small={12} medium={4}>
             <h1>Benefit #1</h1>
           </Column>
-          <Column small={12} medium={4} large={3} offset-lg={1}>
+          <Column small={12} medium={4}>
             <h1>Benefit #2</h1>
           </Column>
-          <Column small={12} medium={4} large={3}>
+          <Column small={12} medium={4}>
             <h1>Benefit #3</h1>
           </Column>
         </Row>
