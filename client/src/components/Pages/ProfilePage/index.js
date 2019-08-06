@@ -55,7 +55,7 @@ class ProfilePage extends Component {
           <Card>
             <Row>
               {/* column 1 (user body info) */}
-              <Column>
+              <Column small={12} medium={6} large={6} offset-lg={1}>
                 {/* <h4>User Info</h4> */}
                 <h5>Name: Ronald</h5>
                 <h5>Email: ronald@ron.com</h5>
@@ -65,13 +65,15 @@ class ProfilePage extends Component {
                 <h5>Activity Level: Sedentary</h5>
               </Column>
 
-              <Column>
-                <h5 class="text-warning">Nutritional Info</h5>
-                <h5>Calories: 5634</h5>
-                <h5>Macros</h5>
-                <h6>- Protein: 1291 cal</h6>
-                <h6>- Fat: 1987 cal</h6>
-                <h6>- Carbs: 2356 cal</h6>
+              <Column small={12} medium={6} large={6} offset-lg={1}>
+                <a float-right>
+                  <h5 class="text-warning">Nutritional Info</h5>
+                  <h5>Calories: 5634</h5>
+                  <h5>Macros</h5>
+                  <h6>- Protein: 1291 cal</h6>
+                  <h6>- Fat: 1987 cal</h6>
+                  <h6>- Carbs: 2356 cal</h6>
+                </a>
               </Column>
             </Row>
           </Card>
@@ -89,7 +91,9 @@ class ProfilePage extends Component {
           </Container>
         </Container>
         {/* grocery store/ delivery/ online shopping links */}
+        <br />
         <Container>
+          <h1 class="text-warning">Start Shopping Right Away!</h1>
           <ShoppingLinks />
         </Container>
       </div>

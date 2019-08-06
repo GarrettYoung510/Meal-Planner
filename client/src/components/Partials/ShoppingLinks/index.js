@@ -15,7 +15,7 @@ const ShoppingLinks = props => {
             <button
               type="submit"
               // href={props.href}
-              onclick="location.href = 'https://www.amazon.com/AmazonFresh/b?ie=UTF8&node=10329849011';"
+              href="https://www.amazon.com/AmazonFresh/b?ie=UTF8&node=10329849011"
               class="btn btn-warning"
               role="button"
             >
@@ -29,7 +29,7 @@ const ShoppingLinks = props => {
             <button
               type="submit"
               // href={props.href}
-              onclick="location.href = 'https://sameday.costco.com/';"
+              onclick="https://sameday.costco.com/"
               class="btn btn-warning"
               role="button"
             >
