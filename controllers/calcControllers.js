@@ -8,9 +8,9 @@ module.exports = {
   //Macro calc = Fat=.29 x (cal/9), Protein .18 x (cal/4), Carb .53 x (cal/4)
   getBMR: async (req, res) => {
     try {
-        const user = await db.User.findById(req.user._id).populate('user');
+        const user = await db.User.findById(req.user._id) //.populate('user');
         const { email,first_name, last_name, age, gender, weight, height, activity_level, calories, protein, fat, carb} = user;
-        res.json({email, first_name, last_name, age, gender, weight, height, activity_level, calories, protein, fat, carb})
+        res.json({ user: {email, first_name, last_name, age, gender, weight, height, activity_level, calories, protein, fat, carb}})
     } catch (e) {
       res.json(e);
     }
