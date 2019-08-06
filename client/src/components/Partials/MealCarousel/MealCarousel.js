@@ -25,11 +25,11 @@ class MealCarousel extends Component {
       case 'featured':
         return <FeaturedMealSelect meal="featured"/>
       case 'breakfast':
-          return <BreakfastMealSelect/>
+          return <BreakfastMealSelect meal="breakfast"/>
       case 'entre':
-          return <EntreMealSelect/>
+          return <EntreMealSelect meal="entre"/>
       case 'side':
-        return <SideMealSelect/>
+        return <SideMealSelect meal="side"/>
     }
   }
     
@@ -39,8 +39,7 @@ class MealCarousel extends Component {
   // }
 
   render() {
-    let param = this.props.mealSelect
-    console.log(param)
+    let param = this.props.meal
     return(
       <>
         {this.mealSelect(param)}
