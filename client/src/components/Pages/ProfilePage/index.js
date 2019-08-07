@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { fetchCalc } from "../../../actions";
-import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
+// import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
 // import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
@@ -19,7 +19,6 @@ class ProfilePage extends Component {
     console.log("this is inside profilepage", this.props.user);
     console.log(this.props)
   }
-
 
   height() {
     console.log(this.props.user.height)
@@ -91,22 +90,32 @@ class ProfilePage extends Component {
             </Row>
           </Card>
         </Container>
-        {/* meals container */}
+        <br />
         <Container>
-          <Container>
-            <Card>
-              <Row>
-                <h2 class="text-warning">Selected Meals</h2>
-              </Row>
-              <MealCarousel />
-              <h9>carousel made with love by ryan</h9>
-            </Card>
-          </Container>
+          <h1 class="text-warning">Get Started!</h1>
+          <a
+            class="btn btn-warning"
+            float-right
+            href="mealselect"
+            target="_blank"
+          >
+            Start Selecting Your Meals
+          </a>
+        </Container>
+        <Container>
+          {/* selected meals */}
+          <Card>
+            <Row>
+              <h2 class="text-warning">Selected Meals</h2>
+            </Row>
+          </Card>
         </Container>
         {/* grocery store/ delivery/ online shopping links */}
         <br />
         <Container>
-          <h1 class="text-warning">Start Shopping Right Away!</h1>
+          <h2 class="text-warning">Links to Grocery Delivery!</h2>
+        </Container>
+        <Container>
           <ShoppingLinks />
         </Container>
       </div>

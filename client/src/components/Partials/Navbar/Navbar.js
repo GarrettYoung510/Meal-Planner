@@ -32,15 +32,19 @@ const Navbar = () => {
               <span className="sr-only">(current)</span>
             </a>
             <a className="nav-item nav-link">
-              <Link to="/" className="text-light">
-                Features
+              <Link to="/profilepage" className="text-light">
+                Profile
               </Link>
             </a>
             <a className="nav-item nav-link">
-              <Link to="/signin" className="text-light">Sign In</Link>
+              <Link to="/signin" className="text-light">
+                Sign In
+              </Link>
             </a>
             <a className="nav-item nav-link">
-              <Link to="/signup" className="text-light">Sign Up</Link>
+              <Link to="/signup" className="text-light">
+                Sign Up
+              </Link>
             </a>
           </div>
         </div>
