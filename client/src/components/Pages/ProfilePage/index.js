@@ -35,7 +35,15 @@ class ProfilePage extends Component {
     return this.props.user.weight + " lbs.";
   }
 
-  activity_level() {
+  gender() {
+    if (this.props.user.gender === "male") {
+      return "Male"
+    } else {
+      return "Female"
+    }
+  }
+
+  activityLevel() {
     if (parseInt(this.props.user.activity_level) === 1) {
       return "Sedentary";
     } else if (parseInt(this.props.user.activity_level) === 2) {
@@ -71,16 +79,16 @@ class ProfilePage extends Component {
                   Name: {this.props.user.first_name} {this.props.user.last_name}
                 </h5>
                 <h5>Email: {this.props.user.email}</h5>
-                <h5>Height: {this.props.user.height}</h5>
-                <h5>Weight: {this.props.user.weight}</h5>
-                <h5>Gender: {this.props.user.gender}</h5>
-                <h5>Activity Level: {this.props.user.activity_level}</h5>
+                <h5>Height: {this.props.user.height ? this.height() : this.props.user.height}</h5>
+                <h5>Weight: {this.props.user.weight ? this.weight() : this.props.user.weight}</h5>
+                <h5>Gender: {this.props.user.gender ? this.gender() : this.props.user.gender}</h5>
+                <h5>Activity Level: {this.props.user.activity_level ? this.activityLevel(): this.props.user.activity_level}</h5>
               </Column>
 
               <Column small={12} medium={6} large={6} offset-lg={1}>
                 <a float-right>
                   <h5 class="text-warning">Nutritional Info</h5>
-                  <h5>Daily Calories: {this.props.user.calories}</h5>
+                  <h5>Daily Calories: {Math.round(this.props.user.calories)}</h5>
                   <h5>Macros</h5>
                   <h6>- Protein: {this.props.user.protein} grams</h6>
                   <h6>- Fat: {this.props.user.fat} grams</h6>
