@@ -16,22 +16,25 @@ class FeaturedMealSelect extends Component {
     meals: []
   };
 
-  handleIncrement = index => {
-    // console.log(index)
-    this.setState(prevState => {
-      const newMeals = [...this.state.meals];
-      newMeals[index].count += 1;
-      return { meals: newMeals };
-    });
-  };
 
-  handleDecrement = index => {
-    // console.log(index)
-    this.setState(prevState => {
-      const newMeals = [...this.state.meals];
-      newMeals[index].count -= 1;
-      return { meals: newMeals };
-    });
+  // handleIncrement = index => {
+  //   // console.log(index)
+  //   this.setState(prevState => {
+  //     const newMeals = [...this.state.meals];
+  //     newMeals[index].count += 1;
+  //     return { meals: newMeals };
+  //   });
+  // };
+
+  handleFavorite = index => {
+    console.log('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+    alert('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+    // this.setState(prevState => {
+    //   const newMeals = [...this.state.meals];
+    //   newMeals[index].count -= 1;
+    //   return { meals: newMeals };
+    // });
+
   };
 
   mealDisplay = () => {
@@ -57,6 +60,29 @@ class FeaturedMealSelect extends Component {
             }
           }
           meal.calories = Math.floor(calories);
+          let protein = 0;
+          if (res.data.foods) {
+            for (let i = 0; i < res.data.foods.length; i++) {
+              protein += res.data.foods[i].nf_protein;
+            }
+          }
+          meal.protein = Math.floor(protein);
+
+          let carbs = 0;
+          if (res.data.foods) {
+            for (let i = 0; i < res.data.foods.length; i++) {
+              carbs += res.data.foods[i].nf_total_carbohydrate;
+            }
+          }
+          meal.carbs = Math.floor(carbs);
+
+          let fat = 0;
+          if (res.data.foods) {
+            for (let i = 0; i < res.data.foods.length; i++) {
+              fat += res.data.foods[i].nf_total_fat;
+            }
+          }
+          meal.fat = Math.floor(fat);
 
           this.setState({ meals: [...this.state.meals, meal] });
         });
@@ -67,6 +93,7 @@ class FeaturedMealSelect extends Component {
   componentWillMount() {
     this.mealDisplay();
   }
+
 
   render() {
     return (
@@ -105,7 +132,8 @@ class FeaturedMealSelect extends Component {
                       <p
                         style={{
                           background: "rgba(235, 235, 235, 0.6)",
-                          "text-align": "center"
+                          "text-align": "center",
+                          "font-weight": "900"
                         }}
                       >
                         {item.strMeal}
@@ -113,30 +141,35 @@ class FeaturedMealSelect extends Component {
                       <p
                         style={{
                           background: "rgba(235, 235, 235, 0.6)",
-                          "text-align": "center"
+                          "text-align": "center",
+                          "font-weight": "900"
                         }}
                       >
-                        {item.calories + " Calories"}
+                        {"Carbs: " + item.carbs + "g Fat: " + item.fat + "g Protein: " + item.protein + "g"}
                       </p>
                       <p
                         style={{
                           background: "rgba(235, 235, 235, 0.6)",
-                          "text-align": "center"
+                          "text-align": "center",
+                          "font-weight": "900"
                         }}
                       >
-                        {"Count: " + item.count}
+                        {"Calories: " + item.calories}
                       </p>
                       <p>
                         <button
-                          className="btn btn-dark"
+                          className="btn-block btn-dark text-center"
                           type="button"
+                          // style={{
+                          //   "text-align": "center",
+                          // }}
                           onClick={() => {
-                            this.handleDecrement(index);
+                            this.handleFavorite(index);
                           }}
                         >
-                          -1
+                          Favorite
                         </button>
-                        <button
+                        {/* <button
                           className="btn btn-dark"
                           type="button"
                           onClick={() => {
@@ -144,7 +177,8 @@ class FeaturedMealSelect extends Component {
                           }}
                         >
                           +1
-                        </button>
+
+                        </button> */}
                       </p>
                     </div>
                   </div>
