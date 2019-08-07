@@ -7,7 +7,7 @@ import axios from "axios";
 // import Signin from "../../../containers/Signin";
 // import Signup from "../../../containers/Signup";
 import Column from "../../Partials/Column/Column";
-// import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
+import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 // import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 import BreakfastMealSelect from "../../Partials/MealCarousel/SlideComponent/BreakfastMealSelect";

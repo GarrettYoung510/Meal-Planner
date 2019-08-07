@@ -14,7 +14,7 @@ const Main = () => {
           <h1>Featured Meals</h1>
         </Column>
       </Row>
-      <MealCarousel mealSelect="featured" />
+      <FeaturedMealSelect />
       <Row>
         <Column small={12} medium={4}>
           <h1>Benefit #1</h1>
@@ -25,11 +25,6 @@ const Main = () => {
         <Column small={12} medium={4}>
           <h1>Benefit #3</h1>
         </Column>
-      </Row>
-      <Row>
-        <Container>
-          <h1>Section for featured meals goes here</h1>
-        </Container>
       </Row>
     </Container>
   );
