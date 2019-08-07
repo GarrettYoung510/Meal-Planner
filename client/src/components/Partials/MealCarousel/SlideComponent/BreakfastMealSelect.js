@@ -42,7 +42,7 @@ class BreakfastMealSelect extends Component {
                     newEntres.push({...meal, count: 0});
                     const URL = `/api/meal?meal=${meal.strMeal}`;
                     axios.get(URL).then(res => {
-                        console.log(res.data.foods);
+                        // console.log(res.data.foods);
                         let calories = 0;
                         let protein = 0;
                         let carbs = 0;

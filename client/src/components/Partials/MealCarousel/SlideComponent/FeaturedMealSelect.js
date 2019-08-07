@@ -48,28 +48,28 @@ class FeaturedMealSelect extends Component {
     Promise.all(promises).then(values => {
       values.forEach(random => {
         const meal = random.data.meals[0];
-        // const URL = `/api/meal?meal=${meal.strMeal}`;
-        // axios.get(URL).then(res => {
-        //   console.log(res.data.foods);
-        //   // attaches calories to meal object
-        //   let calories = 0;
-        //   let protein = 0;
-        //   let carbs = 0;
-        //   let fat = 0;
-        //   if (res.data.foods) {
-        //     for (let i = 0; i < res.data.foods.length; i++) {
-        //       calories += res.data.foods[i].nf_calories;
-        //       protein += res.data.foods[i].nf_protein;
-        //       carbs += res.data.foods[i].nf_total_carbohydrate;
-        //       fat += res.data.foods[i].nf_total_fat;
-        //     }
-        //   }
-        //   meal.calories = Math.floor(calories);
-        //   meal.protein = Math.floor(protein);
-        //   meal.carbs = Math.floor(carbs);
-        //   meal.fat = Math.floor(fat);
+        const URL = `/api/meal?meal=${meal.strMeal}`;
+        axios.get(URL).then(res => {
+          console.log(res.data.foods);
+          // attaches calories to meal object
+          let calories = 0;
+          let protein = 0;
+          let carbs = 0;
+          let fat = 0;
+          if (res.data.foods) {
+            for (let i = 0; i < res.data.foods.length; i++) {
+              calories += res.data.foods[i].nf_calories;
+              protein += res.data.foods[i].nf_protein;
+              carbs += res.data.foods[i].nf_total_carbohydrate;
+              fat += res.data.foods[i].nf_total_fat;
+            }
+          }
+          meal.calories = Math.floor(calories);
+          meal.protein = Math.floor(protein);
+          meal.carbs = Math.floor(carbs);
+          meal.fat = Math.floor(fat);
           this.setState({ meals: [...this.state.meals, meal] });
-        // });
+        });
       });
     });
   };

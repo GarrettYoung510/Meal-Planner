@@ -22,7 +22,6 @@ export default class MainCourseDropDown extends Component {
   };
 
   handleMealClick = async (category, index) => {
-    console.log(category)
     this.props.onMealSelect(category);
     this.setState({ display: !this.state.display });
   };
@@ -38,8 +37,6 @@ export default class MainCourseDropDown extends Component {
   }
 
   render() {
-    console.log("triggered")
-    console.log(this.state);
     return (
       <div className="dropdown">
         <button

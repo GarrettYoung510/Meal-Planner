@@ -3,7 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { signup } from "../actions";
-
+import { Link } from 'react-router-dom';
 import validator from "validator";
 import Container from "./../components/Partials/Container/Container";
 import Row from "./../components/Partials/Row/Row";
