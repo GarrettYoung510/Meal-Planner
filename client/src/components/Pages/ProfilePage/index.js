@@ -9,7 +9,7 @@ import Container from "../../Partials/Container/Container";
 import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
 import requireAuth from "./../../../hoc/requireAuth";
-import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
+// import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
 import Card from "../../Partials/Card/Card";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
