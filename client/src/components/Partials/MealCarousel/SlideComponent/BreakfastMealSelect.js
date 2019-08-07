@@ -18,7 +18,6 @@ class BreakfastMealSelect extends Component {
     };
 
     handleIncrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count += 1
@@ -27,7 +26,6 @@ class BreakfastMealSelect extends Component {
     }
 
     handleDecrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count -= 1
@@ -41,8 +39,8 @@ class BreakfastMealSelect extends Component {
                 const meal = breakfast.data.meals
                 meal.forEach(item =>{
                     item.count = 0
+                    this.setState({ meals: [...this.state.meals, item] })
                 })
-                this.setState({ meals: [...this.state.meals, meal] })
             })
             .catch(error => {
                 console.log(error)
@@ -51,7 +49,6 @@ class BreakfastMealSelect extends Component {
     
     componentWillMount() {
         this.mealDisplay()
-        console.log("hit")
     }
     
     render() {

@@ -10,15 +10,24 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import s from './../style.scss';
 import axios from 'axios';
+import MainCourseDropDown from './../../MainCourseDropDown'
+import Row from './../../Row/Row'
+import Column from './../../Column/Column'
 
 class EntreMealSelect extends Component {
 
     state = {
-        meals: []
+        meals: [],
+        entre: "chicken"
     };
-
+    
+    componentDidMount(){
+        console.log("form entre meal")
+        // this.props.entreState(this.setState)xx
+        this.mealDisplay();
+    }
+    
     handleIncrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count += 1
@@ -27,7 +36,6 @@ class EntreMealSelect extends Component {
     }
 
     handleDecrement = (index) => {
-        // console.log(index)
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
             newMeals[index].count -= 1
@@ -36,28 +44,47 @@ class EntreMealSelect extends Component {
     }
     
     mealDisplay = () => {
-        // Enter variable for dropdown selection
-        axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken")
+        this.setState({ meals: []})
+        const query = this.state.entre
+        console.log(query)
+        axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + query)
             .then(entre => {
-                const meal = entre.data.meals
-                meal.forEach(item =>{
-                    item.count = 0
+                const meals = entre.data.meals
+                console.log(meals);
+                const newEntres = [];
+                meals.forEach(meal => {
+                    newEntres.push({...meal, count: 0});
                 })
-                this.setState({ meals: [...this.state.meals, meal] })
+
+                this.setState({meals: newEntres});
             })
             .catch(error => {
                 console.log(error)
             }) 
     }
-    
-    componentWillMount() {
-        this.mealDisplay()
-        console.log("hit")
+
+    handleMealSelect = value => {
+        
+        this.setState({
+            entre: value
+          }, () => {
+              this.mealDisplay()
+          })
     }
 
     render() {
-
+        
+        console.log(this.state);
         return (
+            <>
+            <Row>
+                <Column small="12" medium="6">
+                    <h3>Lunch & Dinner </h3>
+                </Column>
+                <Column small="12" medium="6 d-flex justify-content-end">
+                    <MainCourseDropDown onMealSelect={this.handleMealSelect}/>
+                </Column>
+            </Row>
             <CarouselProvider
                 visibleSlides={3}
                 totalSlides={this.state.meals.length}
@@ -108,6 +135,7 @@ class EntreMealSelect extends Component {
                 </ButtonNext>
                 </div>
             </CarouselProvider>
+            </>
         )
     }
 }

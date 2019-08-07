@@ -1,10 +1,6 @@
 # Meal-Planner
 
-![Screenshots-1](Link to screenshot)
-![Screenshots-2](Link to screenshot)
-![Screenshots-3](Link to screenshot)
-![Screenshots-4](Link to screenshot)
-![Screenshots-5](Link to screenshot)
+![Sign Up](https://i.lensdump.com/i/iiBnWm.png)
 
 ## Summary
 Our app allows you to enter in your health goals and creates a meal plan for you based on your calorie/macro requirements.
