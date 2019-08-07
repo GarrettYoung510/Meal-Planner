@@ -4,7 +4,8 @@ import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
 import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
 import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
-import Card from "../../Partials/Card/Card";
+import FeaturedMealSelect from "../../Partials/MealCarousel/SlideComponent/FeaturedMealSelect";
+
 
 const Main = () => {
   return (
@@ -17,7 +18,7 @@ const Main = () => {
             <h1>Featured Meals</h1>
           </Column>
         </Row>
-        <MealCarousel mealSelect="featured"/>
+        <FeaturedMealSelect />
         <Row>
           <Column small={12} medium={4}>
             <h1>Benefit #1</h1>
