@@ -110,7 +110,9 @@ class MealSelect extends Component {
               <h3>Breakfast</h3>
             </Column>
           </Row>
+          <br/>
           <BreakfastMealSelect />
+          <br/>
           {/* Lunch & Dinner combined carousel */}
           <EntreMealSelect />
 

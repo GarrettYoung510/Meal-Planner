@@ -7,12 +7,7 @@ import FeaturedMealSelect from "../../Partials/MealCarousel/SlideComponent/Featu
 
 const Main = () => {
   return (
-<<<<<<< HEAD
     <Container mb="mb-5">
-=======
-
-    <Container>
->>>>>>> 951606bc5ceb74bbb3e6daeb5008570f0efa67b3
       <Jumbotron />
       <Row>
         <Column small={12}>

@@ -24,7 +24,6 @@ class MealCarousel extends Component {
         })
     }
 
-<<<<<<< HEAD
     handleDecrement = (index) => {
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
@@ -109,6 +108,3 @@ class MealCarousel extends Component {
 }
 
 export default MealCarousel;
-=======
-
->>>>>>> 951606bc5ceb74bbb3e6daeb5008570f0efa67b3
