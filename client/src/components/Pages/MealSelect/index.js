@@ -112,19 +112,18 @@ class MealSelect extends Component {
           </Row>
           <BreakfastMealSelect />
           {/* Lunch & Dinner combined carousel */}
-          <EntreMealSelect entre={this.state.entre} />
+          <EntreMealSelect />
 
           {/* Snack Carousel */}
           <Row>
             <h3>Side</h3>
           </Row>
           <SideMealSelect />
-          <Row>
-            <Container>
-              <h1>Link to shopping list generator goes here</h1>
-            </Container>
-          </Row>
-
+          <br/><br/>
+          <Container>  
+            <button className="btn btn-warning">Submit Meal Selections
+            </button>
+          </Container>
           <ShoppingLinks />
         </Container>
       </div>

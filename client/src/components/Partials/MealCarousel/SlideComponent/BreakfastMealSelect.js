@@ -59,6 +59,10 @@ class BreakfastMealSelect extends Component {
                         meal.protein = Math.floor(protein);
                         meal.carbs = Math.floor(carbs);
                         meal.fat = Math.floor(fat);
+                        meal.caloriesTotal = meal.count * meal.calories;
+                        meal.proteinTotal = Math.floor(protein);
+                        meal.carbsTotal = Math.floor(carbs);
+                        meal.fatTotal = Math.floor(fat);
                     })
                 })
                 this.setState({meals: newEntres});
@@ -136,6 +140,7 @@ class BreakfastMealSelect extends Component {
                 >
                     Next
                 </ButtonNext>
+                {/* <p>Calorie Goal: {CalorieGoal} // Calorie Total: {this.state.calorieTotal</p> */}
                 </div>
             </CarouselProvider>
         )
