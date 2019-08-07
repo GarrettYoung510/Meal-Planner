@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { fetchCalc } from "../../../actions";
-import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
+// import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
 // import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
@@ -69,7 +69,7 @@ class ProfilePage extends Component {
               <Row>
                 <h2 class="text-warning">Selected Meals</h2>
               </Row>
-              <MealCarousel />
+              {/* <MealCarousel /> */}
               <h9>carousel made with love by ryan</h9>
             </Card>
           </Container>
