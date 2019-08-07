@@ -12,7 +12,6 @@ import s from './style.scss';
 import axios from 'axios';
 
 class MealCarousel extends Component {
-
     state = {
         meals: []
     };

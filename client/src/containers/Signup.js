@@ -8,7 +8,7 @@ import validator from "validator";
 import Container from "./../components/Partials/Container/Container";
 import Row from "./../components/Partials/Row/Row";
 import Column from "./../components/Partials/Column/Column";
-import Footer from "./../components/Partials/Footer/Footer";
+// import Footer from "./../components/Partials/Footer/Footer";
 
 class Signup extends Component {
   renderErrors = ({ error, touched }) => {
