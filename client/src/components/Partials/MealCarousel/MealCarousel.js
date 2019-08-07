@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ButtonBack,
   ButtonNext,
   CarouselProvider,
   Slide,
   Slider,
-  Image
+  // Image
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 // import Row from './../Row/Row';
@@ -33,6 +33,8 @@ class MealCarousel extends Component {
     }
   }
 
+
+class MealCarousel extends Component {
   render() {
     let param = this.props.mealSelect
     return(
@@ -43,4 +45,4 @@ class MealCarousel extends Component {
   }
 }
 
-export default MealCarousel
+export default MealCarousel;

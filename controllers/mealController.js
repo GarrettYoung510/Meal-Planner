@@ -58,6 +58,11 @@ module.exports = {
       return res.json(err);
     }
   },
+
+}
+
+
+
   //   createTodo: async (req, res) => {
   //     const { description } = req.body;
   //     try {
@@ -89,16 +94,15 @@ module.exports = {
   //   }
   // }
 
-  // nutritionGet = async () => {
-  //   const allowCORS = 'https://cors-anywhere.herokuapp.com/'
-  //   const URL = 'https://trackapi.nutritionix.com/v2/search/item?nix_item_id=5c66693b886783da3b0e8811'
+//   nutritionGet = async () => {
+//     const allowCORS = 'https://cors-anywhere.herokuapp.com/'
+//     const URL = 'https://trackapi.nutritionix.com/v2/search/item?nix_item_id=5c66693b886783da3b0e8811'
 
-  //   try{
-  //     const data = await axios.get(allowCORS + URL, {headers : {          "x-app-id": nutritionixAppId,
-  // "x-app-key": nutitionixAppKey}})
-  //     console.log(data)
-  //   }catch(err) {
-  //     console.error(err)
-  //   }
-  // }
-}
+//     try{
+//       const data = await axios.get(allowCORS + URL, {headers : {          "x-app-id": nutritionixAppId,
+//   "x-app-key": nutitionixAppKey}})
+//       console.log(data)
+//     }catch(err) {
+//       console.error(err)
+//     }
+//   }

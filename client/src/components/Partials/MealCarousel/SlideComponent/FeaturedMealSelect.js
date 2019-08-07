@@ -16,6 +16,7 @@ class FeaturedMealSelect extends Component {
     meals: []
   };
 
+
   // handleIncrement = index => {
   //   // console.log(index)
   //   this.setState(prevState => {
@@ -33,6 +34,7 @@ class FeaturedMealSelect extends Component {
     //   newMeals[index].count -= 1;
     //   return { meals: newMeals };
     // });
+
   };
 
   mealDisplay = () => {
@@ -91,6 +93,7 @@ class FeaturedMealSelect extends Component {
   componentWillMount() {
     this.mealDisplay();
   }
+
 
   render() {
     return (
@@ -174,6 +177,7 @@ class FeaturedMealSelect extends Component {
                           }}
                         >
                           +1
+
                         </button> */}
                       </p>
                     </div>
