@@ -14,19 +14,32 @@ export default class MainCourseDropDown extends Component {
       "Vegan",
       "Vegetarian"
     ],
-    choice: ""
+    // choice: null
   };
 
   handleButtonClick = () => {
     this.setState({ display: !this.state.display });
   };
 
-  handleMealClick = index => {
-    console.log(index);
-    this.props.onMealSelect(this.state.categories[index]);
+  handleMealClick = async (category, index) => {
+    console.log(category)
+    this.props.onMealSelect(category);
+    this.setState({ display: !this.state.display });
   };
 
+  renderSwitch() {
+    switch(this.state.ca) {
+      case this.state.choice :
+        return this.state.choice;
+      default: 
+        return <p>Select Meal Type</p>;
+
+    }
+  }
+
   render() {
+    console.log("triggered")
+    console.log(this.state);
     return (
       <div className="dropdown">
         <button
@@ -38,10 +51,11 @@ export default class MainCourseDropDown extends Component {
           aria-expanded="false"
           onClick={this.handleButtonClick}
         >
-          Select Main Course
+          {this.renderSwitch} 
+          {/* Select Meal Type */}
         </button>
         <div
-          className="dropdown-menu"
+          className="dropdown-menu dropdown-menu-right"
           aria-labelledby="dropdownMenuButton"
           style={{ display: this.state.display ? "block" : "none" }}
         >
@@ -50,7 +64,7 @@ export default class MainCourseDropDown extends Component {
               // function defined that onclick returns index of meal clicked
               <li
                 onClick={() => {
-                  this.handleMealClick(index);
+                  this.handleMealClick(category, index);
                 }}
                 className="dropdown-item"
                 key={index}
