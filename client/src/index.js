@@ -15,7 +15,6 @@ import Signout from "./containers/Signout";
 // import Meals from "./containers/Meals";
 // import Todo from './containers/Todo';
 
-
 // Import components
 import Main from "./components/Pages/Main";
 import Navbar from "./components/Partials/Navbar/Navbar";
@@ -58,7 +57,7 @@ ReactDOM.render(
         {/* <Route exact path='/counter' component={Counter}/>
         <Route exact path='/stuff' component={Stuff}/>
         <Route exact path='/todo' component={Todo}/> */}
-        <Footer/>
+        <Footer />
       </App>
     </Router>
   </Provider>,
