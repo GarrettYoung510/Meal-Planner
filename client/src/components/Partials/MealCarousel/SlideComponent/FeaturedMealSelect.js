@@ -54,36 +54,21 @@ class FeaturedMealSelect extends Component {
           console.log(res.data.foods);
           // attaches calories to meal object
           let calories = 0;
-          if (res.data.foods) {
-            for (let i = 0; i < res.data.foods.length; i++) {
-              calories += res.data.foods[i].nf_calories;
-            }
-          }
-          meal.calories = Math.floor(calories);
           let protein = 0;
-          if (res.data.foods) {
-            for (let i = 0; i < res.data.foods.length; i++) {
-              protein += res.data.foods[i].nf_protein;
-            }
-          }
-          meal.protein = Math.floor(protein);
-
           let carbs = 0;
-          if (res.data.foods) {
-            for (let i = 0; i < res.data.foods.length; i++) {
-              carbs += res.data.foods[i].nf_total_carbohydrate;
-            }
-          }
-          meal.carbs = Math.floor(carbs);
-
           let fat = 0;
           if (res.data.foods) {
             for (let i = 0; i < res.data.foods.length; i++) {
+              calories += res.data.foods[i].nf_calories;
+              protein += res.data.foods[i].nf_protein;
+              carbs += res.data.foods[i].nf_total_carbohydrate;
               fat += res.data.foods[i].nf_total_fat;
             }
           }
+          meal.calories = Math.floor(calories);
+          meal.protein = Math.floor(protein);
+          meal.carbs = Math.floor(carbs);
           meal.fat = Math.floor(fat);
-
           this.setState({ meals: [...this.state.meals, meal] });
         });
       });

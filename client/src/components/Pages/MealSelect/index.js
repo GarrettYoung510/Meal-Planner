@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
+// import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import Container from "../../Partials/Container/Container";
 import Row from "../../Partials/Row/Row";
 import axios from "axios";
 // import config from '../../../../../config.js';
 // import Signin from "../../../containers/Signin";
 // import Signup from "../../../containers/Signup";
-// import Column from "../../Partials/Column/Column";
+import Column from "../../Partials/Column/Column";
 import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 // import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";

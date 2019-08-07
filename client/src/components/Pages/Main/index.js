@@ -9,8 +9,6 @@ import FeaturedMealSelect from "../../Partials/MealCarousel/SlideComponent/Featu
 
 const Main = () => {
   return (
-    <Container>
-      <Jumbotron />
       <Container>
         <Jumbotron />
         <Row>
@@ -28,9 +26,8 @@ const Main = () => {
           </Column>
           <Column small={12} medium={4}>
             <h1>Benefit #3</h1>
-          </Card>
-        </Column>
-      </Row>
+          </Column>
+        </Row>
     </Container>
   );
 };
