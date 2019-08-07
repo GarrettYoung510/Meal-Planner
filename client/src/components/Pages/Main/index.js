@@ -7,6 +7,7 @@ import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 
 const Main = () => {
   return (
+
     <Container>
       <Jumbotron />
       <Row>
