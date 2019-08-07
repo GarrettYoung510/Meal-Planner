@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const ShoppingLinks = props => {
   return (
-    <Container>
+    <Container mb={"mb-5"}>
       <Row>
         {/* link 1 */}
         <Column>

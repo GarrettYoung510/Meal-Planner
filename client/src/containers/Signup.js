@@ -155,7 +155,7 @@ class Signup extends Component {
     // console.log(this.props);
     const { handleSubmit } = this.props;
     return (
-      <Container>
+      <Container mb={"mb-5"}>
         <br />
         <br />
         <h1>Welcome to Meal Planner</h1>
@@ -324,7 +324,7 @@ class Signup extends Component {
             Signup submits your information anonymously for custom results
           </h5>
           <br />
-          <button type="submit" className="btn btn-lg btn-outline-warning">
+          <button type="submit" className="btn btn-lg btn-outline-warning mb-5">
             Signup
           </button>
           <br />

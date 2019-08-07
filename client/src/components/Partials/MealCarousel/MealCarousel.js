@@ -33,8 +33,6 @@ class MealCarousel extends Component {
     }
   }
 
-
-class MealCarousel extends Component {
   render() {
     let param = this.props.mealSelect
     return(
@@ -45,4 +43,4 @@ class MealCarousel extends Component {
   }
 }
 
-export default MealCarousel;
+export default MealCarousel
