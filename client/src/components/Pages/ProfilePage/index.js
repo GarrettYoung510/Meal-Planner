@@ -19,13 +19,6 @@ class ProfilePage extends Component {
     console.log("this is inside profilepage", this.props.user);
   }
 
-  // render() {
-  //   return (
-  //     <div>
-  //       <h1>{this.props.user.email}</h1>
-  //     </div>
-  //   );
-  // };
 
   render() {
     return (
@@ -34,7 +27,7 @@ class ProfilePage extends Component {
           <Row>
             <Column>
               <h1 class="text-center" class="text-warning">
-                Your Profile this is a change
+                Your Profile
               </h1>
             </Column>
           </Row>
