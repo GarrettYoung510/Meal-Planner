@@ -9,7 +9,7 @@ import Container from "../../Partials/Container/Container";
 import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
 import requireAuth from "./../../../hoc/requireAuth";
-import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
+// import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
 import Card from "../../Partials/Card/Card";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 
@@ -26,7 +26,6 @@ class ProfilePage extends Component {
   //     </div>
   //   );
   // };
-
 
   render() {
     return (
@@ -48,7 +47,9 @@ class ProfilePage extends Component {
               {/* column 1 (user body info) */}
               <Column small={12} medium={6} large={6} offset-lg={1}>
                 {/* <h4>User Info</h4> */}
-                <h5>Name: {this.props.user.first_name} {this.props.user.last_name}</h5>
+                <h5>
+                  Name: {this.props.user.first_name} {this.props.user.last_name}
+                </h5>
                 <h5>Email: {this.props.user.email}</h5>
                 <h5>Height: {this.props.user.height}</h5>
                 <h5>Weight: {this.props.user.weight}</h5>
@@ -93,13 +94,16 @@ class ProfilePage extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("mapState", state)
+  console.log("mapState", state);
   // return { user: state.user }
-  return state.user
+  return state.user;
 }
 
 const formedComponent = compose(
-  connect(mapStateToProps, { fetchCalc }),
+  connect(
+    mapStateToProps,
+    { fetchCalc }
+  )
 )(ProfilePage);
 
 export default requireAuth(formedComponent);
