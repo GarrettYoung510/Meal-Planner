@@ -17,10 +17,9 @@ import SideMealSelect from "../../Partials/MealCarousel/SlideComponent/SideMealS
 class MealSelect extends Component {
   state = {
     // pull the initial meals to select
-    mealsArray: ["meal 1", "meal 2"],
+    mealsArray: ["meal 1", "meal 2"]
     // entre: "Chicken",
     // entreMealSel
-    
   };
   // entreMealSelect = null
   // entreState = (cb) => {
@@ -31,34 +30,34 @@ class MealSelect extends Component {
     // console.log(value)
     this.setState({
       entre: value
-    })
+    });
     // console.log(value);
     // this.getMeals(value);
   };
-        
+
   // getMeals = async type => {
   //   this.setState({
   //     entre: type
   //   })
-    // const URL = `/api/meal/choose?type=${type}`;
-    // try {
-    //   const data = await axios({
-    //     url: URL,
-    //     method: "GET"
-    //   })
-    //   console.log("this is the full object: " + data);
-    //   // array of meals under that category
-    //   console.log("this is the meals" + data.data.meals);
-    //   // code for pulling picture from api
-    //   console.log("this is the first meals picture link" + data.data.meals[0].strMealThumb);
-    //   // code for pulling meal name will need this to run through nutrients api
-    //   console.log("this is first meals name" + data.data.meals[0].strMeal);
-    //   // this.setState({
-    //   //   entre: data.data.meals
-    //   // })
-    // } catch (e) {
-    //   console.error(e);
-    // }
+  // const URL = `/api/meal/choose?type=${type}`;
+  // try {
+  //   const data = await axios({
+  //     url: URL,
+  //     method: "GET"
+  //   })
+  //   console.log("this is the full object: " + data);
+  //   // array of meals under that category
+  //   console.log("this is the meals" + data.data.meals);
+  //   // code for pulling picture from api
+  //   console.log("this is the first meals picture link" + data.data.meals[0].strMealThumb);
+  //   // code for pulling meal name will need this to run through nutrients api
+  //   console.log("this is first meals name" + data.data.meals[0].strMeal);
+  //   // this.setState({
+  //   //   entre: data.data.meals
+  //   // })
+  // } catch (e) {
+  //   console.error(e);
+  // }
   // };
 
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
@@ -94,13 +93,14 @@ class MealSelect extends Component {
     return (
       <div className="App">
         <Container>
-          <br/><br/>
+          <br />
+          <br />
           <Row>
             <Column>
-            <h1>Meal Select Page</h1>
+              <h1>Meal Select Page</h1>
             </Column>
           </Row>
-          <br/>
+          <br />
         </Container>
 
         {/* Breakfast carousel */}
@@ -110,29 +110,15 @@ class MealSelect extends Component {
               <h3>Breakfast</h3>
             </Column>
           </Row>
-<<<<<<< HEAD
-
-          {/* Lunch & Dinner combined carousel */}
-          <Row>
-            <h3>Lunch & Dinner</h3>
-            {/* lunch main course dropdown */}
-            <MainCourseDropdown onMealSelect={this.handleMealSelect} />
-          </Row>
-=======
           <BreakfastMealSelect />
           {/* Lunch & Dinner combined carousel */}
           <EntreMealSelect entre={this.state.entre} />
->>>>>>> 640bcb2361984279463403c053060a4ebecb7435
 
           {/* Snack Carousel */}
           <Row>
             <h3>Side</h3>
           </Row>
-<<<<<<< HEAD
-
-=======
           <SideMealSelect />
->>>>>>> 640bcb2361984279463403c053060a4ebecb7435
           <Row>
             <Container>
               <h1>Link to shopping list generator goes here</h1>

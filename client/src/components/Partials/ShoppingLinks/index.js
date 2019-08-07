@@ -10,7 +10,7 @@ const ShoppingLinks = props => {
     <Container>
       <Row>
         {/* link 1 */}
-        <Column>
+        <Column small={12} medium={4}>
           {/* Amazon Fresh */}
           <Card>
             <a
@@ -23,7 +23,7 @@ const ShoppingLinks = props => {
           </Card>
         </Column>
         {/* link 2 */}
-        <Column>
+        <Column small={12} medium={4}>
           <Card>
             <a
               class="btn btn-warning"
@@ -34,7 +34,7 @@ const ShoppingLinks = props => {
             </a>
           </Card>
         </Column>
-        <Column>
+        <Column small={12} medium={4}>
           <Card>
             <a
               class="btn btn-warning"
