@@ -17,6 +17,34 @@ class ProfilePage extends Component {
   componentDidMount() {
     this.props.fetchCalc();
     console.log("this is inside profilepage", this.props.user);
+    console.log(this.props)
+  }
+
+  height() {
+    console.log(this.props.user.height)
+    const feet = Math.floor(this.props.user.height / 12)
+    const inches = this.props.user.height - feet * 12;
+    if (inches > 0) {
+      return feet + "' " + inches + '"';
+    } else {
+      return feet + "'";
+    }
+  }
+
+  weight() {
+    return this.props.user.weight + " lbs.";
+  }
+
+  activity_level() {
+    if (parseInt(this.props.user.activity_level) === 1) {
+      return "Sedentary";
+    } else if (parseInt(this.props.user.activity_level) === 2) {
+      return "Less Active";
+    } else if (parseInt(this.props.user.activity_level) === 3) {
+      return "Moderately Active";
+    } else if (parseInt(this.props.user.activity_level) === 4) {
+      return "Very Active";
+    }
   }
 
   render() {

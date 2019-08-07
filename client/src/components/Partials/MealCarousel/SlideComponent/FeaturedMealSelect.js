@@ -48,7 +48,6 @@ class FeaturedMealSelect extends Component {
     Promise.all(promises).then(values => {
       values.forEach(random => {
         const meal = random.data.meals[0];
-        meal.count = 0;
         const URL = `/api/meal?meal=${meal.strMeal}`;
         axios.get(URL).then(res => {
           console.log(res.data.foods);
@@ -124,47 +123,29 @@ class FeaturedMealSelect extends Component {
                         {item.strMeal}
                       </p>
                       <p
-                        style={{
-                          background: "rgba(235, 235, 235, 0.6)",
-                          "text-align": "center",
-                          "font-weight": "900"
-                        }}
+                        style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}
                       >
                         {"Carbs: " + item.carbs + "g Fat: " + item.fat + "g Protein: " + item.protein + "g"}
                       </p>
                       <p
-                        style={{
-                          background: "rgba(235, 235, 235, 0.6)",
-                          "text-align": "center",
-                          "font-weight": "900"
-                        }}
+                        style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}
                       >
                         {"Calories: " + item.calories}
                       </p>
-                      <p>
+                      <div className="d-flex justify-content-center">
                         <button
-                          className="btn-block btn-dark text-center"
+                          className="btn btn-outline-warning text-dark"
                           type="button"
-                          // style={{
-                          //   "text-align": "center",
-                          // }}
+                          style={{
+                            "text-align": "center",
+                          }}
                           onClick={() => {
                             this.handleFavorite(index);
                           }}
                         >
                           Favorite
                         </button>
-                        {/* <button
-                          className="btn btn-dark"
-                          type="button"
-                          onClick={() => {
-                            this.handleIncrement(index);
-                          }}
-                        >
-                          +1
-
-                        </button> */}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </Slide>

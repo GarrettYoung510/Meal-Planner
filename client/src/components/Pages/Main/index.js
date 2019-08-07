@@ -3,13 +3,12 @@ import Container from "../../Partials/Container/Container";
 import Row from "../../Partials/Row/Row";
 import Column from "../../Partials/Column/Column";
 import Jumbotron from "../../Partials/Jumbotron/Jumbotron";
-// import MealCarousel from "../../Partials/MealCarousel/MealCarousel";
 import FeaturedMealSelect from "../../Partials/MealCarousel/SlideComponent/FeaturedMealSelect";
 import Card from "../../Partials/Card/Card";
 
 const Main = () => {
   return (
-    <Container>
+    <Container mb="mb-5">
       <Jumbotron />
       <Row>
         <Column small={12}>
