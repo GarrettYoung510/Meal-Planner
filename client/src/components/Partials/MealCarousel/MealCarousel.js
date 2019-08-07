@@ -32,17 +32,17 @@ class MealCarousel extends Component {
         return <SideMealSelect />
     }
   }
-
-
-class MealCarousel extends Component {
-  render() {
-    let param = this.props.mealSelect
-    return(
-      <>
-        {this.mealSelect(param)}
-      </>
-    )
-  }
 }
+
+// class MealCarousel extends Component {
+//   render() {
+//     let param = this.props.mealSelect
+//     return(
+//       <>
+//         {this.mealSelect(param)}
+//       </>
+//     )
+//   }
+// }
 
 export default MealCarousel;
