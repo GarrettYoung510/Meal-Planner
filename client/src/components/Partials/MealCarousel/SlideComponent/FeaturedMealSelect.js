@@ -48,7 +48,7 @@ class FeaturedMealSelect extends Component {
     Promise.all(promises).then(values => {
       values.forEach(random => {
         const meal = random.data.meals[0];
-        meal.count = 0;
+        // meal.count = 0;
         const URL = `/api/meal?meal=${meal.strMeal}`;
         axios.get(URL).then(res => {
           console.log(res.data.foods);

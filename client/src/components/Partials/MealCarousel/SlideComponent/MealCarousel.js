@@ -11,7 +11,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import s from './../style.scss';
 import axios from 'axios';
 
-class BreakfastMealSelect extends Component {
+class MealCarousel extends Component {
 
     state = {
         meals: []
@@ -36,32 +36,11 @@ class BreakfastMealSelect extends Component {
     mealDisplay = () => {
         axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=breakfast")
             .then(breakfast => {
-                // console.log(breakfast)
-                const newEntres = [];
-                breakfast.data.meals.forEach(meal => {
-                    newEntres.push({...meal, count: 0});
-                    const URL = `/api/meal?meal=${meal.strMeal}`;
-                    axios.get(URL).then(res => {
-                        console.log(res.data.foods);
-                        let calories = 0;
-                        let protein = 0;
-                        let carbs = 0;
-                        let fat = 0;
-                        if (res.data.foods) {
-                            for (let i = 0; i < res.data.foods.length; i++) {
-                              calories += res.data.foods[i].nf_calories;
-                              protein += res.data.foods[i].nf_protein;
-                              carbs += res.data.foods[i].nf_total_carbohydrate;
-                              fat += res.data.foods[i].nf_total_fat;
-                            }
-                        }
-                        meal.calories = Math.floor(calories);
-                        meal.protein = Math.floor(protein);
-                        meal.carbs = Math.floor(carbs);
-                        meal.fat = Math.floor(fat);
-                    })
+                const meal = breakfast.data.meals
+                meal.forEach(item =>{
+                    item.count = 0
+                    this.setState({ meals: [...this.state.meals, item] })
                 })
-                this.setState({meals: newEntres});
             })
             .catch(error => {
                 console.log(error)
@@ -96,27 +75,14 @@ class BreakfastMealSelect extends Component {
                                     "align-items": "flex-start"
                                 }}>
                                     <Image src={item.strMealThumb} style={{ "position": "absolute", "z-index": -1 }} />
-                                    <div style={{ "z-index": 1, "position": "absolute", "bottom": "0", "align-self": "center" }}>
-                                        <p
-                                            style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center", "font-weight": "900" }}
-                                        >
+                                    <div style={{ "z-index": 1, "position": "absolute", "bottom": "10%", "align-self": "center" }}>
+                                        <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
                                             {item.strMeal}
                                         </p>
-                                        <p
-                                            style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}
-                                        >
-                                            {"Carbs: " + item.carbs + "g "}
-                                            {"Fat: " + item.fat + "g "}
-                                            {"Protein: " + item.protein + "g "} 
-                                            {"Calories: " + item.calories}
+                                        <p style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
+                                            {"Count: " + item.count}
                                         </p>
-                                        <p 
-                                            style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
-                                                {"Count: " + item.count}
-                                        </p>
-                                        <p 
-                                            style={{ "text-align": "center" }}
-                                        >
+                                        <p>
                                             <button className="btn btn-dark" type="button" onClick={() => { this.handleDecrement(index) }}>-1</button>
                                             <button className="btn btn-dark" type="button" onClick={() => { this.handleIncrement(index) }}>+1</button>
                                         </p>
@@ -142,4 +108,4 @@ class BreakfastMealSelect extends Component {
     }
 }
 
-export default BreakfastMealSelect;
+export default MealCarousel;
