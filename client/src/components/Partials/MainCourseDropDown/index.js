@@ -14,31 +14,32 @@ export default class MainCourseDropDown extends Component {
       "Vegan",
       "Vegetarian"
     ],
-    choice: ""
+    // choice: null
   };
 
   handleButtonClick = () => {
     this.setState({ display: !this.state.display });
   };
 
-  handleMealClick = (category, index) => {
-    // console.log(category);
+  handleMealClick = async (category, index) => {
+    console.log(category)
+    this.props.onMealSelect(category);
     this.setState({ display: !this.state.display });
-    this.props.onMealSelect(this.state.categories[index])
-    this.setState({ choice: category });
   };
 
   renderSwitch() {
-    switch(this.state.choice) {
+    switch(this.state.ca) {
       case this.state.choice :
         return this.state.choice;
       default: 
-        return "Select Meal Type";
+        return <p>Select Meal Type</p>;
 
     }
   }
 
   render() {
+    console.log("triggered")
+    console.log(this.state);
     return (
       <div className="dropdown">
         <button
@@ -54,7 +55,7 @@ export default class MainCourseDropDown extends Component {
           {/* Select Meal Type */}
         </button>
         <div
-          className="dropdown-menu"
+          className="dropdown-menu dropdown-menu-right"
           aria-labelledby="dropdownMenuButton"
           style={{ display: this.state.display ? "block" : "none" }}
         >

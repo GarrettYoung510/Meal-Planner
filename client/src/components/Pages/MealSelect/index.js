@@ -18,26 +18,28 @@ class MealSelect extends Component {
   state = {
     // pull the initial meals to select
     mealsArray: ["meal 1", "meal 2"],
-    entre: "Chicken",
+    // entre: "Chicken",
+    // entreMealSel
     
   };
-  entreMealSelect = null
-  entreState = (cb) => {
-    this.entreMealSelect = cb
-  }
+  // entreMealSelect = null
+  // entreState = (cb) => {
+  //   this.entreMealSelect = cb
+  // }
 
   handleMealSelect = value => {
-    // console.log(value);
-    this.getMeals(value);
+    // console.log(value)
     this.setState({
       entre: value
-    }, this.entreMealSelect({entre:this.state.entre}))
+    })
+    // console.log(value);
+    // this.getMeals(value);
   };
         
-  getMeals = async type => {
-    this.setState({
-      entre: type
-    })
+  // getMeals = async type => {
+  //   this.setState({
+  //     entre: type
+  //   })
     // const URL = `/api/meal/choose?type=${type}`;
     // try {
     //   const data = await axios({
@@ -57,7 +59,7 @@ class MealSelect extends Component {
     // } catch (e) {
     //   console.error(e);
     // }
-  };
+  // };
 
   // use simple get to get specific meals for breakfast, lunch, dinner, snack
   // populate 5 options
@@ -109,17 +111,7 @@ class MealSelect extends Component {
           </Row>
           <BreakfastMealSelect />
           {/* Lunch & Dinner combined carousel */}
-          <Row>
-            <Column small="12" medium="6">
-              <h3>Lunch & Dinner </h3>
-            </Column>
-            {/* lunch main course dropdown */}
-            <Column small="12" medium="6 d-flex justify-content-end">
-              <MainCourseDropdown onMealSelect={this.handleMealSelect} />
-              {/* <MainCourseDropdown onMealSelect={this.handleMealSelect} /> */}
-            </Column>
-          </Row>
-          <EntreMealSelect entreState={this.entreState} entre={this.state.entre} />
+          <EntreMealSelect entre={this.state.entre} />
 
           {/* Snack Carousel */}
           <Row>
