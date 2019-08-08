@@ -7,7 +7,6 @@ class ShoppingList extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
         <Container>
           <Row>
             <h1>Shopping List/ Grocery List</h1>

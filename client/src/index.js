@@ -54,9 +54,6 @@ ReactDOM.render(
         <Route exact path="/mealselect" component={MealSelect} />
         <Route exact path="/profilepage" component={ProfilePage} />
         <Route exact path="/shoppinglist" component={ShoppingList} />
-        {/* <Route exact path='/counter' component={Counter}/>
-        <Route exact path='/stuff' component={Stuff}/>
-        <Route exact path='/todo' component={Todo}/> */}
         <Footer />
       </App>
     </Router>
