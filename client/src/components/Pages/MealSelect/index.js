@@ -17,9 +17,13 @@ import SideMealSelect from "../../Partials/MealCarousel/SlideComponent/SideMealS
 class MealSelect extends Component {
   state = {
     // pull the initial meals to select
-    mealsArray: ["meal 1", "meal 2"]
+    mealsArray: ["meal 1", "meal 2"],
     // entre: "Chicken",
     // entreMealSel
+    totalCalories: localStorage.getItem("calories"),
+    totalProtein: localStorage.getItem("protein"),
+    totalFat: localStorage.getItem("fat"),
+    totalCarbs: localStorage.getItem("carbs")
   };
   // entreMealSelect = null
   // entreState = (cb) => {
@@ -98,6 +102,8 @@ class MealSelect extends Component {
           <Row>
             <Column>
               <h1>Meal Select Page</h1>
+              <h3>Recommended</h3>
+              <h4>Calories: {Math.round(this.state.totalCalories)} Protein: {this.state.totalProtein}g Fat: {this.state.totalFat}g Carbs: {this.state.totalCarbs}g</h4>
             </Column>
           </Row>
           <br />

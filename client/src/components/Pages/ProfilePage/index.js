@@ -17,12 +17,12 @@ class ProfilePage extends Component {
   componentDidMount() {
     this.props.fetchCalc();
     console.log("this is inside profilepage", this.props.user);
-    console.log(this.props)
+    console.log("general props" + this.props);
   }
 
   height() {
-    console.log(this.props.user.height)
-    const feet = Math.floor(this.props.user.height / 12)
+    console.log(this.props.user.height);
+    const feet = Math.floor(this.props.user.height / 12);
     const inches = this.props.user.height - feet * 12;
     if (inches > 0) {
       return feet + "' " + inches + '"';
@@ -56,6 +56,10 @@ class ProfilePage extends Component {
   }
 
   render() {
+    localStorage.setItem("calories", this.props.user.calories);
+    localStorage.setItem("protein", this.props.user.protein);
+    localStorage.setItem("fat", this.props.user.fat);
+    localStorage.setItem("carbs", this.props.user.carb);
     return (
       <div className="App">
         <Container>
