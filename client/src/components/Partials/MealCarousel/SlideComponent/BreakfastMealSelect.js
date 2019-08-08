@@ -14,23 +14,56 @@ import axios from 'axios';
 class BreakfastMealSelect extends Component {
 
     state = {
-        meals: []
+        meals: [],
+        selectedMeals: []
     };
 
     handleIncrement = (index) => {
         this.setState(prevState => {
+            const selMeals = [...this.state.selectedMeals]
             const newMeals = [...this.state.meals]
+            selMeals.push(newMeals[index])
             newMeals[index].count += 1
-            return { meals: newMeals}
+            return { meals: newMeals, selectedMeals: selMeals}
         })
     }
 
     handleDecrement = (index) => {
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
-            newMeals[index].count -= 1
-            return { meals: newMeals}
+            const selMeals = [...this.state.selectedMeals]
+            const newList = []
+            const pops = []
+            console.log('hit')
+            console.log(selMeals)
+            if(newMeals[index].count <= 0) {
+                newMeals[index].count = 0
+            }else{
+                const num = newMeals[index].count
+                newMeals[index].count -= 1
+                for(let i = 0; i < selMeals.length; i++){
+                    if(selMeals[i].idMeal !== newMeals[index].idMeal){    
+                        newList.push(selMeals[i])
+                    } else{
+                        pops.push(selMeals[i])
+                    }
+                }
+                pops.pop()
+                pops.forEach(item => {
+                    newList.push(item)
+                })
+            }
+            return { meals: newMeals, selectedMeals: newList }
         })
+    }
+    
+    fiveDayCalorieTotal() {
+        const selMeals = this.state.selectedMeals;
+        let total = 0;
+        selMeals.forEach(item => {
+            total = total + item.calories
+        })
+        return total;
     }
     
     mealDisplay = () => {
@@ -49,20 +82,16 @@ class BreakfastMealSelect extends Component {
                         let fat = 0;
                         if (res.data.foods) {
                             for (let i = 0; i < res.data.foods.length; i++) {
-                              calories += res.data.foods[i].nf_calories;
-                              protein += res.data.foods[i].nf_protein;
-                              carbs += res.data.foods[i].nf_total_carbohydrate;
-                              fat += res.data.foods[i].nf_total_fat;
+                                calories += res.data.foods[i].nf_calories;
+                                protein += res.data.foods[i].nf_protein;
+                                carbs += res.data.foods[i].nf_total_carbohydrate;
+                                fat += res.data.foods[i].nf_total_fat;
                             }
                         }
                         meal.calories = Math.floor(calories);
                         meal.protein = Math.floor(protein);
                         meal.carbs = Math.floor(carbs);
                         meal.fat = Math.floor(fat);
-                        meal.caloriesTotal = meal.count * meal.calories;
-                        meal.proteinTotal = Math.floor(protein);
-                        meal.carbsTotal = Math.floor(carbs);
-                        meal.fatTotal = Math.floor(fat);
                     })
                 })
                 this.setState({meals: newEntres});
@@ -115,13 +144,10 @@ class BreakfastMealSelect extends Component {
                                             {"Calories: " + item.calories}
                                         </p>
                                         <p 
-                                            style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
-                                                {"Count: " + item.count}
-                                        </p>
-                                        <p 
                                             style={{ "text-align": "center" }}
                                         >
                                             <button className="btn btn-dark" type="button" onClick={() => { this.handleDecrement(index) }}>-1</button>
+                                            <button style={{ "font-weight": "900" }} className="btn btn-warning">{item.count}</button>
                                             <button className="btn btn-dark" type="button" onClick={() => { this.handleIncrement(index) }}>+1</button>
                                         </p>
                                     </div>
@@ -141,6 +167,7 @@ class BreakfastMealSelect extends Component {
                     Next
                 </ButtonNext>
                 {/* <p>Calorie Goal: {CalorieGoal} // Calorie Total: {this.state.calorieTotal</p> */}
+                <h5>5 Day Calorie SubTotal: {this.state.selectedMeals.length > 0 ? this.fiveDayCalorieTotal() : "0"}</h5>
                 </div>
             </CarouselProvider>
         )

@@ -1,5 +1,6 @@
 //const db = require('../models');
-const { nutritionixAppId, nutitionixAppKey } = require('../config')
+const { nutritionixAppId, nutitionixAppKey } = require('../config');
+const { app_id, app_key } = require('../config');
 const axios = require('axios');
 
 module.exports = {
@@ -32,6 +33,7 @@ module.exports = {
 
   getMealData: async (req, res) => {
     const URL = "https://trackapi.nutritionix.com/v2/natural/nutrients";
+    // const URL = "https://api.edamam.com/api/nutrition-details?app_id=" + app_id + "&app_key=" + app_key + "&title=" + query;
     mealSelected = req.query.meal;
     console.log(mealSelected)
     try {
@@ -41,6 +43,8 @@ module.exports = {
         headers: {
           "x-app-id": nutritionixAppId,
           "x-app-key": nutitionixAppKey
+          // "Content-Type": "application/json"
+
         },
         // from what they select above in the meals db get meal of type, we run the name through this query
         data: { query: mealSelected }

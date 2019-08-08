@@ -93,6 +93,10 @@ class MealSelect extends Component {
     }
   };
 
+  formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
   render() {
     return (
       <div className="App">
@@ -102,8 +106,8 @@ class MealSelect extends Component {
           <Row>
             <Column>
               <h1>Meal Select Page</h1>
-              <h3>Recommended</h3>
-              <h4>Calories: {Math.round(this.state.totalCalories)} Protein: {this.state.totalProtein}g Fat: {this.state.totalFat}g Carbs: {this.state.totalCarbs}g</h4>
+              <h3>5 Day Recommendation:</h3>
+              <h4>Calories: {this.formatNumber(Math.round(this.state.totalCalories * 5))}  |  Protein: {this.state.totalProtein * 5}g  |  Fat: {this.state.totalFat * 5}g  |  Carbs: {this.formatNumber(this.state.totalCarbs * 5)}g</h4>
             </Column>
           </Row>
           <br />
@@ -114,19 +118,35 @@ class MealSelect extends Component {
           <Row>
             <Column>
               <h3>Breakfast</h3>
+              <h5>
+                Select 5 Total Dishes:
+              </h5>
             </Column>
           </Row>
-          <br/>
           <BreakfastMealSelect />
-          <br/>
+          <h5>
+            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .3))}
+          </h5>
+          <hr/>
           {/* Lunch & Dinner combined carousel */}
           <EntreMealSelect />
-
+          <h5>
+            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .6))}
+          </h5>
+          <hr/>
           {/* Snack Carousel */}
           <Row>
-            <h3>Side</h3>
+            <Column>
+              <h3>Side</h3>
+              <h5>
+                Select 5 Total Dishes:
+              </h5>
+            </Column>
           </Row>
           <SideMealSelect />
+          <h5>
+            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .1))}
+          </h5>
           <br/><br/>
           <Container>  
             <button className="btn btn-warning">Submit Meal Selections

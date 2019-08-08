@@ -5,7 +5,7 @@ import Container from "./../Container/Container";
 
 const Footer = () => {
   return (
-    <footer className="navbar navbar-expand-lg navbar-light bg-light py-3 border-top border-secondary fixed-bottom">
+    <footer className="navbar navbar-expand-lg navbar-light bg-light py-3 border-top border-secondary">
       <Container>
         <p className="float-right">
           <a Link to="#">

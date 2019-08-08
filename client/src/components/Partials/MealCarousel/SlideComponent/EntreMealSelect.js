@@ -18,45 +18,78 @@ class EntreMealSelect extends Component {
 
     state = {
         meals: [],
-        entre: "chicken"
+        entre: "chicken",
+        selectedMeals: []
     };
     
     componentDidMount(){
-        console.log("form entre meal")
+        // console.log("form entre meal")
         // this.props.entreState(this.setState)xx
         this.mealDisplay();
     }
     
     handleIncrement = (index) => {
         this.setState(prevState => {
+            const selMeals = [...this.state.selectedMeals]
             const newMeals = [...this.state.meals]
+            selMeals.push(newMeals[index])
             newMeals[index].count += 1
-            return { meals: newMeals}
+            return { meals: newMeals, selectedMeals: selMeals}
         })
     }
 
     handleDecrement = (index) => {
         this.setState(prevState => {
             const newMeals = [...this.state.meals]
-            newMeals[index].count -= 1
-            return { meals: newMeals}
+            const selMeals = [...this.state.selectedMeals]
+            const newList = []
+            const pops = []
+            console.log('hit')
+            console.log(selMeals)
+            if(newMeals[index].count <= 0) {
+                newMeals[index].count = 0
+            }else{
+                const num = newMeals[index].count
+                newMeals[index].count -= 1
+                for(let i = 0; i < selMeals.length; i++){
+                    if(selMeals[i].idMeal !== newMeals[index].idMeal){    
+                        newList.push(selMeals[i])
+                    } else{
+                        pops.push(selMeals[i])
+                    }
+                }
+                pops.pop()
+                pops.forEach(item => {
+                    newList.push(item)
+                })
+            }
+            return { meals: newMeals, selectedMeals: newList }
         })
+    }
+    
+    fiveDayCalorieTotal() {
+        const selMeals = this.state.selectedMeals;
+        let total = 0;
+        selMeals.forEach(item => {
+            total = total + item.calories
+        })
+        return total;
     }
     
     mealDisplay = () => {
         this.setState({ meals: []})
         const query = this.state.entre
-        console.log(query)
+        // console.log(query)
         axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + query)
             .then(entre => {
                 const meals = entre.data.meals
-                console.log(meals);
+                // console.log(meals);
                 const newEntres = [];
                 meals.forEach(meal => {
                     newEntres.push({...meal, count: 0});
                     const URL = `/api/meal?meal=${meal.strMeal}`;
                     axios.get(URL).then(res => {
-                        console.log(res.data.foods);
+                        // console.log(res.data.foods);
                         let calories = 0;
                         let protein = 0;
                         let carbs = 0;
@@ -94,14 +127,15 @@ class EntreMealSelect extends Component {
 
     render() {
         
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <>
             <Row>
-                <Column small="12" medium="6">
+                <Column small="12" medium="6 p-0">
                     <h3>Lunch & Dinner </h3>
+                    <h5>Select 10 Total Dishes:</h5>
                 </Column>
-                <Column small="12" medium="6 d-flex justify-content-end">
+                <Column small="12" medium="6 d-flex justify-content-end align-items-end">
                     <MainCourseDropDown onMealSelect={this.handleMealSelect}/>
                 </Column>
             </Row>
@@ -141,13 +175,10 @@ class EntreMealSelect extends Component {
                                                 {"Calories: " + item.calories}
                                             </p>
                                             <p 
-                                                style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}>
-                                                    {"Count: " + item.count}
-                                            </p>
-                                            <p 
                                                 style={{ "text-align": "center" }}
                                             >
                                                 <button className="btn btn-dark" type="button" onClick={() => { this.handleDecrement(index) }}>-1</button>
+                                                <button style={{ "font-weight": "900" }} className="btn btn-warning">{item.count}</button>
                                                 <button className="btn btn-dark" type="button" onClick={() => { this.handleIncrement(index) }}>+1</button>
                                             </p>
                                         </div>
@@ -166,6 +197,7 @@ class EntreMealSelect extends Component {
                 >
                     Next
                 </ButtonNext>
+                <h5>5 Day Calorie SubTotal: {this.state.selectedMeals.length > 0 ? this.fiveDayCalorieTotal() : "0"}</h5>
                 </div>
             </CarouselProvider>
             </>

@@ -27,8 +27,18 @@ class FeaturedMealSelect extends Component {
   // };
 
   handleFavorite = index => {
-    console.log('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
-    alert('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+    if(!document.getElementById(this.state.meals[index].idMeal).classList.contains('active')){
+      console.log('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+      alert('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+      var element = document.getElementById(this.state.meals[index].idMeal);
+      element.classList.toggle("active");
+    }else {
+      console.log('you have unfavorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+      alert('you have unfavorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+      var element = document.getElementById(this.state.meals[index].idMeal);
+      element.classList.toggle("active");
+    }
+    
     // this.setState(prevState => {
     //   const newMeals = [...this.state.meals];
     //   newMeals[index].count -= 1;
@@ -134,6 +144,7 @@ class FeaturedMealSelect extends Component {
                       </p>
                       <div className="d-flex justify-content-center">
                         <button
+                          id={item.idMeal}
                           className="btn btn-outline-warning text-dark"
                           type="button"
                           style={{
@@ -141,6 +152,7 @@ class FeaturedMealSelect extends Component {
                           }}
                           onClick={() => {
                             this.handleFavorite(index);
+                            
                           }}
                         >
                           Favorite

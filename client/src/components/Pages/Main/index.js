@@ -18,26 +18,27 @@ const Main = () => {
       <FeaturedMealSelect />
       <Row>
         <Column small={12} medium={4}>
-          <Card>
-            <h1 class="text-warning">Easy</h1>
+          <Card title1="Easy">
             <h3>Eliminates the hassle of frequent grocery shopping</h3>
           </Card>
         </Column>
         <Column small={12} medium={4}>
-          <Card>
-            <h1 class="text-warning">Healthy</h1>
+          <Card title1="Healthy">
             <h3>
               Adding variety to your diet has been proven to increase health
             </h3>
           </Card>
         </Column>
         <Column small={12} medium={4}>
-          <Card>
-            <h1 class="text-warning">Exciting</h1>
+          <Card title1="Exciting">
             <h3>Try new and exciting dishes without worrying about health</h3>
           </Card>
         </Column>
       </Row>
+      <br/><br/>
+      <Container>
+        <h2 className="text-dark text-center">Don't put off your health. Meal into it!</h2>
+      </Container>
     </Container>
   );
 };
