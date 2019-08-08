@@ -106,6 +106,7 @@ class MealSelect extends Component {
           <Row>
             <Column>
               <h1>Meal Select Page</h1>
+
               <h3>5 Day Recommendation:</h3>
               <h4>Calories: {this.formatNumber(Math.round(this.state.totalCalories * 5))}  |  Protein: {this.state.totalProtein * 5}g  |  Fat: {this.state.totalFat * 5}g  |  Carbs: {this.formatNumber(this.state.totalCarbs * 5)}g</h4>
             </Column>
