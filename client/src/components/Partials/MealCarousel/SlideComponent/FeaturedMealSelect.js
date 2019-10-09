@@ -16,7 +16,6 @@ class FeaturedMealSelect extends Component {
     meals: []
   };
 
-
   // handleIncrement = index => {
   //   // console.log(index)
   //   this.setState(prevState => {
@@ -27,24 +26,39 @@ class FeaturedMealSelect extends Component {
   // };
 
   handleFavorite = index => {
-    if(!document.getElementById(this.state.meals[index].idMeal).classList.contains('active')){
-      console.log('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
-      alert('you have favorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
+    if (
+      !document
+        .getElementById(this.state.meals[index].idMeal)
+        .classList.contains("active")
+    ) {
+      console.log(
+        "you have favorited this meal: " +
+          JSON.stringify(this.state.meals[index].strMeal)
+      );
+      alert(
+        "you have favorited this meal: " +
+          JSON.stringify(this.state.meals[index].strMeal)
+      );
       var element = document.getElementById(this.state.meals[index].idMeal);
       element.classList.toggle("active");
-    }else {
-      console.log('you have unfavorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
-      alert('you have unfavorited this meal: ' + JSON.stringify(this.state.meals[index].strMeal));
-      var element = document.getElementById(this.state.meals[index].idMeal);
-      element.classList.toggle("active");
+    } else {
+      console.log(
+        "you have unfavorited this meal: " +
+          JSON.stringify(this.state.meals[index].strMeal)
+      );
+      alert(
+        "you have unfavorited this meal: " +
+          JSON.stringify(this.state.meals[index].strMeal)
+      );
+      // var element = document.getElementById(this.state.meals[index].idMeal);
+      // element.classList.toggle("active");
     }
-    
+
     // this.setState(prevState => {
     //   const newMeals = [...this.state.meals];
     //   newMeals[index].count -= 1;
     //   return { meals: newMeals };
     // });
-
   };
 
   mealDisplay = () => {
@@ -87,7 +101,6 @@ class FeaturedMealSelect extends Component {
   componentWillMount() {
     this.mealDisplay();
   }
-
 
   render() {
     return (
@@ -133,12 +146,24 @@ class FeaturedMealSelect extends Component {
                         {item.strMeal}
                       </p>
                       <p
-                        style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}
+                        style={{
+                          background: "rgba(235, 235, 235, 0.6)",
+                          "text-align": "center"
+                        }}
                       >
-                        {"Carbs: " + item.carbs + "g Fat: " + item.fat + "g Protein: " + item.protein + "g"}
+                        {"Carbs: " +
+                          item.carbs +
+                          "g Fat: " +
+                          item.fat +
+                          "g Protein: " +
+                          item.protein +
+                          "g"}
                       </p>
                       <p
-                        style={{ "background": "rgba(235, 235, 235, 0.6)", "text-align": "center" }}
+                        style={{
+                          background: "rgba(235, 235, 235, 0.6)",
+                          "text-align": "center"
+                        }}
                       >
                         {"Calories: " + item.calories}
                       </p>
@@ -148,11 +173,10 @@ class FeaturedMealSelect extends Component {
                           className="btn btn-outline-warning text-dark"
                           type="button"
                           style={{
-                            "text-align": "center",
+                            "text-align": "center"
                           }}
                           onClick={() => {
                             this.handleFavorite(index);
-                            
                           }}
                         >
                           Favorite
