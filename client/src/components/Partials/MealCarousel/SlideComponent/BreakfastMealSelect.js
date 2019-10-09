@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ButtonBack,
   ButtonNext,
@@ -6,13 +6,12 @@ import {
   Slide,
   Slider,
   Image
-} from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-import s from './../style.scss';
-import axios from 'axios';
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
+import s from "./../style.scss";
+import axios from "axios";
 
 class BreakfastMealSelect extends Component {
-
     state = {
         meals: [],
         selectedMeals: []
@@ -166,7 +165,6 @@ class BreakfastMealSelect extends Component {
                 >
                     Next
                 </ButtonNext>
-                {/* <p>Calorie Goal: {CalorieGoal} // Calorie Total: {this.state.calorieTotal</p> */}
                 <h5>5 Day Calorie SubTotal: {this.state.selectedMeals.length > 0 ? this.fiveDayCalorieTotal() : "0"}</h5>
                 </div>
             </CarouselProvider>
