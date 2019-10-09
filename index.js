@@ -2,12 +2,13 @@ const express   = require('express');
 const morgan    = require('morgan');
 const mongoose  = require('mongoose');
 const cors      = require('cors');
-const path      = require('path')
+const path      = require('path');
+const dotenv = require('dotenv');
 
 const app = express();
 
 // Database setupx
-mongoose.connect('mongodb://localhost:auth/auth', { 
+mongoose.connect(MONGODB_URI || 'mongodb://localhost:auth/auth', { 
   useNewUrlParser: true, 
   useCreateIndex: true
 });
