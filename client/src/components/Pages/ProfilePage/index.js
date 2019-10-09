@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 // import { reduxForm, Field } from 'redux-form';
 import { compose } from "redux";
 import { connect } from "react-redux";
@@ -38,9 +38,9 @@ class ProfilePage extends Component {
 
   gender() {
     if (this.props.user.gender === "male") {
-      return "Male"
+      return "Male";
     } else {
-      return "Female"
+      return "Female";
     }
   }
 
@@ -57,7 +57,7 @@ class ProfilePage extends Component {
   }
 
   formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
   render() {
@@ -67,7 +67,8 @@ class ProfilePage extends Component {
     localStorage.setItem("carbs", this.props.user.carb);
     return (
       <div className="App">
-        <br/><br/>
+        <br />
+        <br />
         <Container>
           <Row>
             <Column>
@@ -80,25 +81,54 @@ class ProfilePage extends Component {
 
         {/* authentication container */}
         <Container class="bg-dark">
-          <Card title3={this.props.user.first_name + " " + this.props.user.last_name}>
+          <Card
+            title3={
+              this.props.user.first_name + " " + this.props.user.last_name
+            }
+          >
             <Row>
               {/* column 1 (user body info) */}
               <Column small={12} medium={6} large={6} offset-lg={1}>
                 <h5>Email: {this.props.user.email}</h5>
-                <h5>Height: {this.props.user.height ? this.height() : this.props.user.height}</h5>
-                <h5>Weight: {this.props.user.weight ? this.weight() : this.props.user.weight}</h5>
+                <h5>
+                  Height:{" "}
+                  {this.props.user.height
+                    ? this.height()
+                    : this.props.user.height}
+                </h5>
+                <h5>
+                  Weight:{" "}
+                  {this.props.user.weight
+                    ? this.weight()
+                    : this.props.user.weight}
+                </h5>
                 <h5>Age: {this.props.user.age}</h5>
-                <h5>Gender: {this.props.user.gender ? this.gender() : this.props.user.gender}</h5>
-                <h5>Activity Level: {this.props.user.activity_level ? this.activityLevel(): this.props.user.activity_level}</h5>
+                <h5>
+                  Gender:{" "}
+                  {this.props.user.gender
+                    ? this.gender()
+                    : this.props.user.gender}
+                </h5>
+                <h5>
+                  Activity Level:{" "}
+                  {this.props.user.activity_level
+                    ? this.activityLevel()
+                    : this.props.user.activity_level}
+                </h5>
               </Column>
               {/* column 2 (nutritional info) */}
               <Column small="12" medium="6" large="5" offset-lg="1">
-                  <h4 className="text-warning ">Nutritional Info</h4>
-                  <h5>Daily Calories: {this.props.user.calories ? this.formatNumber(Math.round(this.props.user.calories)) : Math.round(this.props.user.calories)}</h5>
-                  <h5>Macros</h5>
-                  <h6>- Protein: {this.props.user.protein} grams</h6>
-                  <h6>- Fat: {this.props.user.fat} grams</h6>
-                  <h6>- Carbs: {this.props.user.carb} grams</h6>
+                <h4 className="text-warning ">Nutritional Info</h4>
+                <h5>
+                  Daily Calories:{" "}
+                  {this.props.user.calories
+                    ? this.formatNumber(Math.round(this.props.user.calories))
+                    : Math.round(this.props.user.calories)}
+                </h5>
+                <h5>Macros</h5>
+                <h6>- Protein: {this.props.user.protein} grams</h6>
+                <h6>- Fat: {this.props.user.fat} grams</h6>
+                <h6>- Carbs: {this.props.user.carb} grams</h6>
               </Column>
             </Row>
           </Card>
@@ -106,33 +136,23 @@ class ProfilePage extends Component {
         <br />
         <Container>
           <h1 class="text-warning">Get Started!</h1>
-          <Link
-            className="btn btn-warning"
-            to="/mealselect"
-            target="_blank"
-          >
+          <Link className="btn btn-warning" to="/mealselect" target="_blank">
             Start Selecting Your Meals
           </Link>
         </Container>
         <Container>
           {/* selected meals */}
-          <Card title2="Selected Meals">
-            {/* list for selected meals */}
-          </Card>
+          <Card title2="Selected Meals">{/* list for selected meals */}</Card>
         </Container>
-        <br/>
+        <br />
         <Container>
           <h2 class="text-warning">Let's Get To The List!</h2>
-          <Link
-            className="btn btn-warning"
-            to="/shoppinglist"
-            target="_blank"
-          >
+          <Link className="btn btn-warning" to="/shoppinglist" target="_blank">
             Grocery List Generator
           </Link>
         </Container>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Container>
           <h2 className="text-warning">Links to Grocery Delivery!</h2>
         </Container>
