@@ -7,6 +7,7 @@ import { signin } from "../actions";
 import Container from "./../components/Partials/Container/Container";
 import Row from "./../components/Partials/Row/Row";
 import Column from "./../components/Partials/Column/Column";
+import FeaturedMealSelect from "./../components/Partials/MealCarousel/SlideComponent/FeaturedMealSelect"
 
 class Signin extends Component {
   onSubmit = formValues => {
@@ -68,6 +69,12 @@ class Signin extends Component {
           </Column>
         </Row>
         <br />
+        <Row>
+          <Column small={12}>
+            <h2>Consider Adding These Meals To You Mix</h2>
+          </Column>
+        </Row>
+        <FeaturedMealSelect />
       </Container>
     );
   }
