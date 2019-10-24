@@ -31,6 +31,14 @@ module.exports = {
     }
   },
 
+
+  // Trying to get the stats into the featured carousel by using new API call with Edamam - be sure to sign up and save your id and app key in your config
+  getMealStats: async (req, res) => {
+    const selectedMeal = req.query.meal;
+    return res.selectedMeal;
+    // const URL = `https://api.edamam.com/api/food-database/parser?label=${selectedMeal}&app_id=${app_id}&app_key=${app_key}`
+  },
+
   getMealData: async (req, res) => {
     const URL = "https://trackapi.nutritionix.com/v2/natural/nutrients";
     // const URL = "https://api.edamam.com/api/nutrition-details?app_id=" + app_id + "&app_key=" + app_key + "&title=" + query;
