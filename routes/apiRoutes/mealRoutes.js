@@ -11,6 +11,7 @@ router.route('/')
 //   .post(authMiddleware.requireAuth, mealController.createMeal)
 router.route('/choose')
   .get(mealController.getMeals)
-
+router.route('/data')
+  .get(mealController.getMealStats)
 
 module.exports = router;
