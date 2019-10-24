@@ -7,7 +7,7 @@ import axios from "axios";
 // import Signin from "../../../containers/Signin";
 // import Signup from "../../../containers/Signup";
 import Column from "../../Partials/Column/Column";
-import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
+// import MainCourseDropdown from "../../Partials/MainCourseDropDown/index";
 // import { type } from "os";
 import ShoppingLinks from "../../Partials/ShoppingLinks/index";
 import BreakfastMealSelect from "../../Partials/MealCarousel/SlideComponent/BreakfastMealSelect";
@@ -94,7 +94,7 @@ class MealSelect extends Component {
   };
 
   formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
   render() {
@@ -108,7 +108,13 @@ class MealSelect extends Component {
               <h1>Meal Select Page</h1>
 
               <h3>5 Day Recommendation:</h3>
-              <h4>Calories: {this.formatNumber(Math.round(this.state.totalCalories * 5))}  |  Protein: {this.state.totalProtein * 5}g  |  Fat: {this.state.totalFat * 5}g  |  Carbs: {this.formatNumber(this.state.totalCarbs * 5)}g</h4>
+              <h4>
+                Calories:{" "}
+                {this.formatNumber(Math.round(this.state.totalCalories * 5))} |
+                Protein: {this.state.totalProtein * 5}g | Fat:{" "}
+                {this.state.totalFat * 5}g | Carbs:{" "}
+                {this.formatNumber(this.state.totalCarbs * 5)}g
+              </h4>
             </Column>
           </Row>
           <br />
@@ -119,39 +125,38 @@ class MealSelect extends Component {
           <Row>
             <Column>
               <h3>Breakfast</h3>
-              <h5>
-                Select 5 Total Dishes:
-              </h5>
+              <h5>Select 5 Total Dishes:</h5>
             </Column>
           </Row>
           <BreakfastMealSelect />
           <h5>
-            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .3))}
+            5 Day Calorie Goal:{" "}
+            {this.formatNumber(Math.round(this.state.totalCalories * 5 * 0.3))}
           </h5>
-          <hr/>
+          <hr />
           {/* Lunch & Dinner combined carousel */}
           <EntreMealSelect />
           <h5>
-            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .6))}
+            5 Day Calorie Goal:{" "}
+            {this.formatNumber(Math.round(this.state.totalCalories * 5 * 0.6))}
           </h5>
-          <hr/>
+          <hr />
           {/* Snack Carousel */}
           <Row>
             <Column>
               <h3>Side</h3>
-              <h5>
-                Select 5 Total Dishes:
-              </h5>
+              <h5>Select 5 Total Dishes:</h5>
             </Column>
           </Row>
           <SideMealSelect />
           <h5>
-            5 Day Calorie Goal: {this.formatNumber(Math.round(this.state.totalCalories * 5 * .1))}
+            5 Day Calorie Goal:{" "}
+            {this.formatNumber(Math.round(this.state.totalCalories * 5 * 0.1))}
           </h5>
-          <br/><br/>
-          <Container>  
-            <button className="btn btn-warning">Submit Meal Selections
-            </button>
+          <br />
+          <br />
+          <Container>
+            <button className="btn btn-warning">Submit Meal Selections</button>
           </Container>
           <ShoppingLinks />
         </Container>

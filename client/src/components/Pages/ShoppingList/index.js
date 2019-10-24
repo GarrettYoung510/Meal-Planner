@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Container from "../../Partials/Container/Container";
-import Navbar from "../../Partials/Navbar/Navbar";
+// import Navbar from "../../Partials/Navbar/Navbar";
 import Row from "../../Partials/Row/Row";
 
 class ShoppingList extends Component {
